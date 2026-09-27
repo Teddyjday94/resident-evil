@@ -112,7 +112,7 @@
     mediaGrid.appendChild(el);
   });
 
-  let observer;
+  var observer;
   function observeReveals() {
     if (reduceMotion || !('IntersectionObserver' in window)) { qa('.reveal').forEach(el => el.classList.add('show')); return; }
     if (!observer) observer = new IntersectionObserver((entries) => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('show'); observer.unobserve(entry.target); } }), { threshold:.1 });
