@@ -30,11 +30,12 @@
   const gameGrid = q('#gameGrid');
   data.games.forEach((game, index) => {
     const el = document.createElement('article');
-    el.className = 'game-card reveal searchable';
+    el.className = 'game-card reveal searchable has-media';
     el.dataset.search = [game.title, game.year, game.era, game.summary, ...game.tags].join(' ').toLowerCase();
     el.style.setProperty('--x', `${22 + (index % 4) * 18}%`);
     el.style.setProperty('--accent', index % 3 === 0 ? 'rgba(170,0,0,.55)' : index % 3 === 1 ? 'rgba(90,25,25,.5)' : 'rgba(130,65,10,.38)');
-    el.innerHTML = `<div class="game-code">${escapeText(game.code)}</div><div class="game-content"><div class="game-meta">INCIDENT // ${escapeText(game.year)} // ${escapeText(game.era)}</div><h3>${escapeText(game.title)}</h3><p>${escapeText(game.summary)}</p><div class="tag-row">${game.tags.slice(0,3).map(t => `<span class="tag">${escapeText(t)}</span>`).join('')}</div></div>`;
+    el.innerHTML = `<div class="game-media"><img src="${escapeText(game.image)}" alt="${escapeText(game.title)} game artwork" style="object-position:${escapeText(game.imagePosition || '50% 50%')}" loading="lazy"></div><div class="game-code">${escapeText(game.code)}</div><div class="game-content"><div class="game-meta">INCIDENT // ${escapeText(game.year)} // ${escapeText(game.era)}</div><h3>${escapeText(game.title)}</h3><p>${escapeText(game.summary)}</p><div class="tag-row">${game.tags.slice(0,3).map(t => `<span class="tag">${escapeText(t)}</span>`).join('')}</div></div>`;
+    const img = q('.game-media img', el); if (img) fallbackImage(img, 'GAME MEDIA UNAVAILABLE');
     gameGrid.appendChild(el);
   });
 
