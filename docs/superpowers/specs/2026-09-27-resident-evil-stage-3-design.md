@@ -34,7 +34,7 @@ Add a single `game.html` template and `game.js` renderer. Pages resolve a game w
 
 This follows the existing `dossier.html?id=...` pattern and avoids twelve separate HTML files.
 
-Invalid or missing IDs must produce a useful archive fallback state rather than a blank page or JavaScript exception. A missing ID may default to a known record; an explicitly unknown ID should show “record not found” with a path back to the main archive.
+A missing or unknown game ID must render the same controlled “record not found” archive state with a clear path back to the main archive. It must never default silently to a different game or throw a JavaScript exception.
 
 ### Shared data relationships
 
@@ -72,7 +72,7 @@ Target fields:
 - `incidentFacts[]`
 - `media[]` or related media IDs where practical
 
-Not every record must have every optional field in the first implementation. Rendering must tolerate partial content.
+Not every record must have every optional field in the first implementation. Rendering must tolerate partial content. `heroImage` should fall back to `image` when a dedicated hero image is not supplied.
 
 ### Weapon records
 
@@ -309,9 +309,9 @@ Existing character dossier files remain in place.
 
 ## Error Handling
 
-### Unknown game IDs
+### Unknown or missing game IDs
 
-`game.js` must validate the requested ID before accessing fields. Unknown records render a controlled archive error with a return link.
+`game.js` must validate the requested ID before accessing fields. Missing and unknown IDs both render the same controlled archive error with a return link and no unrelated default record.
 
 ### Missing relations
 
@@ -336,7 +336,7 @@ Required coverage:
 3. Every weapon `characterIds[]` entry points to an existing character.
 4. Game relationship arrays point only to existing records.
 5. `game.html` loads `data.js` and `game.js` and provides required render roots.
-6. `game.js` reads `URLSearchParams` and handles unknown IDs safely.
+6. `game.js` reads `URLSearchParams` and handles missing/unknown IDs safely.
 7. Homepage game cards link to `game.html?id=...`.
 8. Armory filters and weapon rendering hooks exist.
 9. Existing site smoke tests remain green.
@@ -362,7 +362,7 @@ Stage 3 is complete when:
 - all existing game cards link into reusable individual game archive pages
 - game pages render shared personnel, weapons, threats, pathogens, and locations from `data.js`
 - relationships are ID-driven rather than duplicated page content
-- invalid game IDs fail gracefully
+- missing or invalid game IDs fail gracefully
 - desktop and mobile layouts are both usable
 - reduced-motion behavior remains supported
 - existing V2 features continue working
