@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#080808" />
+  <meta name="description" content="Unofficial Resident Evil fan archive and web-design practice project." />
+  <title>Resident Evil // Biohazard Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#050505;
+      --panel:#0b0b0b;
+      --panel-2:#111;
+      --text:#e9e9e9;
+      --muted:#8b8b8b;
+      --line:rgba(255,255,255,.1);
+      --red:#cf0b16;
+      --red-dark:#5c0308;
+      --green:#9cbc55;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(circle at 82% 12%,rgba(130,0,0,.15),transparent 30rem),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(255,255,255,.018) 3px);mix-blend-mode:screen;opacity:.6}
+    ::selection{background:var(--red);color:white}
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    .noise{position:fixed;inset:0;pointer-events:none;z-index:998;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E")}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .nav{position:fixed;inset:0 0 auto;height:72px;z-index:100;border-bottom:1px solid var(--line);background:rgba(5,5,5,.72);backdrop-filter:blur(16px)}
+    .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:26px}
+    .brand{display:flex;align-items:center;gap:11px;font:700 22px/1 "Barlow Condensed",sans-serif;letter-spacing:.06em;text-transform:uppercase}
+    .mark{width:26px;height:26px;border:1px solid rgba(255,255,255,.35);transform:rotate(45deg);background:linear-gradient(90deg,var(--red) 50%,#eee 50%);box-shadow:0 0 22px rgba(207,11,22,.22)}
+    .brand small{color:#646464;font-size:10px;font-weight:600;margin-left:4px}
+    .links{display:flex;gap:24px;color:#999;font:600 13px/1 "Barlow Condensed",sans-serif;letter-spacing:.08em;text-transform:uppercase}
+    .links a{transition:.25s}.links a:hover{color:white}
+    .status{display:flex;align-items:center;gap:8px;color:#777;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 14px var(--red);animation:pulse 1.6s infinite}
+    .menu{display:none;border:1px solid var(--line);background:#0b0b0b;color:white;padding:9px 11px;text-transform:uppercase;font:700 12px "Barlow Condensed";letter-spacing:.1em}
+    @keyframes pulse{50%{opacity:.25}}
+
+    .hero{min-height:100vh;position:relative;display:grid;align-items:center;padding-top:72px;overflow:hidden}
+    .grid{position:absolute;inset:0;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:58px 58px;mask-image:linear-gradient(to bottom,#000,transparent 90%)}
+    .glow{position:absolute;width:760px;height:760px;right:-180px;top:-100px;background:radial-gradient(circle,rgba(160,0,0,.24),transparent 66%);animation:breathe 8s ease-in-out infinite}
+    @keyframes breathe{50%{transform:scale(1.14);opacity:.65}}
+    .hero-content{position:relative;z-index:3;max-width:870px}
+    .classification,.eyebrow{color:var(--red);font:700 12px/1 "Barlow Condensed",sans-serif;letter-spacing:.22em;text-transform:uppercase}
+    .hero h1{margin:20px 0 0;font:800 clamp(78px,13vw,170px)/.72 "Barlow Condensed",sans-serif;letter-spacing:-.055em;text-transform:uppercase}
+    .hero h1 span{display:block;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.27)}
+    .hero-copy{max-width:610px;margin:34px 0;color:#a0a0a0;font-size:15px;line-height:1.85}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{border:1px solid rgba(255,255,255,.14);padding:14px 21px;background:rgba(255,255,255,.025);color:white;font:700 13px "Barlow Condensed",sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:.25s}.btn:hover{transform:translateY(-3px);border-color:var(--red)}.btn.primary{background:var(--red);border-color:var(--red)}
+    .hero-stats{position:absolute;right:5%;bottom:7%;z-index:4;display:grid;grid-template-columns:repeat(2,135px);gap:1px;background:var(--line);border:1px solid var(--line)}
+    .stat{background:#080808;padding:16px}.stat strong{display:block;font:700 26px "Barlow Condensed"}.stat small{color:#616161;font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+    .scroll-cue{position:absolute;left:calc(50% - 18px);bottom:24px;width:36px;height:54px;border:1px solid rgba(255,255,255,.15);border-radius:22px;display:grid;place-items:start center;padding-top:10px;opacity:.65}.scroll-cue::after{content:"";width:3px;height:9px;border-radius:3px;background:var(--red);animation:scroll 1.8s infinite}@keyframes scroll{70%{transform:translateY(20px);opacity:0}}
+
+    section{padding:118px 0;position:relative}
+    .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:45px}
+    .title{margin:8px 0 0;font:800 clamp(44px,7vw,78px)/.88 "Barlow Condensed",sans-serif;letter-spacing:-.03em;text-transform:uppercase}
+    .copy{max-width:430px;color:#777;font-size:13px;line-height:1.75}
+    .terminal{margin-bottom:28px;padding:22px;border:1px solid var(--line);background:linear-gradient(130deg,rgba(207,11,22,.05),transparent),rgba(255,255,255,.015)}
+    .terminal-label{margin-bottom:10px;color:#686868;font:11px monospace}
+    .search{width:100%;padding:14px 15px;border:1px solid #292929;background:#070707;color:white;outline:none}.search:focus{border-color:var(--red)}
+
+    .games{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .card{position:relative;overflow:hidden;border:1px solid var(--line);background:#0b0b0b;transition:.35s}
+    .game{min-height:350px;cursor:pointer;transform-style:preserve-3d}.game:hover{border-color:rgba(207,11,22,.65);box-shadow:0 25px 70px rgba(0,0,0,.5)}
+    .game-bg{position:absolute;inset:0;background:radial-gradient(circle at var(--x,50%) 28%,var(--accent,rgba(150,0,0,.5)),transparent 54%),linear-gradient(150deg,#1a1a1a,#030303);transition:.55s}.game:hover .game-bg{transform:scale(1.08)}
+    .num{position:absolute;right:12px;top:6px;font:800 108px/.9 "Barlow Condensed";opacity:.05}
+    .game-body{position:relative;z-index:2;min-height:350px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end}.meta{color:var(--red);font:11px monospace;margin-bottom:8px}.game h3,.dossier h3,.pathogen h3,.faction h3,.location h3{margin:0;text-transform:uppercase;font:700 29px/.98 "Barlow Condensed"}.game p,.dossier p,.pathogen p,.faction p{margin:10px 0 0;color:#777;font-size:12px;line-height:1.65}
+
+    .characters{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.dossier{min-height:265px;padding:29px;background:radial-gradient(circle at 90% 0,rgba(160,0,0,.15),transparent 170px),#090909}.dossier::before{content:"";position:absolute;left:0;top:0;width:0;height:2px;background:var(--red);transition:.35s}.dossier:hover::before{width:100%}.dossier:hover{transform:translateY(-5px);background-color:#101010}.file{color:#555;font:10px monospace;margin-bottom:48px}.role{margin-top:6px;color:var(--red);font:10px monospace;text-transform:uppercase;letter-spacing:.04em}
+
+    .timeline{position:relative}.timeline::before{content:"";position:absolute;left:132px;top:0;bottom:0;width:1px;background:#292929}.event{display:grid;grid-template-columns:100px 1fr;gap:60px;margin:0 0 48px}.year{text-align:right;color:#757575;font:600 26px "Barlow Condensed"}.event-body{padding-left:24px;border-left:2px solid var(--red);max-width:780px}.event-body h3{margin:0 0 7px;text-transform:uppercase;font:700 27px "Barlow Condensed"}.event-body p{margin:0;color:#777;font-size:13px;line-height:1.75}
+
+    .pathogens{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.pathogen{min-height:300px;padding:29px;background:linear-gradient(120deg,rgba(105,130,55,.08),transparent 60%),#090a08}.specimen{position:absolute;right:-60px;top:-70px;width:230px;height:230px;border:1px solid rgba(156,188,85,.18);border-radius:50%;box-shadow:0 0 60px rgba(156,188,85,.05),inset 0 0 60px rgba(156,188,85,.04)}.specimen::before,.specimen::after{content:"";position:absolute;inset:35px;border-radius:50%;border:1px dotted rgba(156,188,85,.18)}.specimen::after{inset:70px}.pathogen small{color:var(--green);font:10px monospace}.pathogen h3{margin-top:70px;font-size:36px}.pathogen p{max-width:470px}
+
+    .factions{display:grid;grid-template-columns:1.25fr .75fr .75fr;gap:12px}.faction{min-height:250px;padding:28px;background:linear-gradient(140deg,rgba(150,0,0,.08),transparent),#0a0a0a}.faction:first-child{grid-row:span 2;min-height:512px}.faction .stamp{width:74px;height:74px;border:1px solid rgba(255,255,255,.1);display:grid;place-items:center;margin-bottom:70px;transform:rotate(-6deg);color:#6b6b6b;font:800 17px "Barlow Condensed";letter-spacing:.05em}.faction:first-child .stamp{margin-bottom:225px}.faction p{max-width:480px}
+
+    .locations{display:grid;grid-template-columns:1.4fr .8fr .8fr;grid-auto-rows:260px;gap:10px}.location{display:flex;align-items:flex-end;padding:25px;background:radial-gradient(circle at 68% 28%,rgba(160,0,0,.14),transparent 40%),linear-gradient(145deg,#171717,#050505)}.location:first-child{grid-row:span 2}.location::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 39px,rgba(255,255,255,.017) 40px)}.location-info{position:relative;z-index:2}.location small{color:#707070;font:10px monospace}.location h3{margin-top:6px;font-size:30px}
+
+    .reveal{opacity:0;transform:translateY(34px);transition:opacity .75s ease,transform .75s ease}.reveal.show{opacity:1;transform:none}
+    body.scanner{filter:sepia(.22) hue-rotate(38deg) saturate(.9)}body.scanner .noise{opacity:.08}
+    .mobile-panel{display:none;position:fixed;top:72px;left:0;right:0;z-index:90;background:rgba(5,5,5,.96);border-bottom:1px solid var(--line);padding:16px 20px}.mobile-panel.open{display:grid;gap:10px}.mobile-panel a{padding:12px;border:1px solid var(--line);font:700 14px "Barlow Condensed";letter-spacing:.08em;text-transform:uppercase}
+
+    footer{padding:58px 0;border-top:1px solid var(--line);color:#555;font-size:11px;line-height:1.7}.footer-inner{display:flex;justify-content:space-between;gap:30px;align-items:center}.warning{font-family:monospace;text-transform:uppercase;max-width:650px}
+    @media (max-width:980px){.links,.status{display:none}.menu{display:block}.hero-stats{display:none}.games{grid-template-columns:repeat(2,1fr)}.characters{grid-template-columns:repeat(2,1fr)}.factions{grid-template-columns:1fr 1fr}.faction:first-child{grid-row:auto;min-height:300px}.faction:first-child .stamp,.faction .stamp{margin-bottom:80px}.locations{grid-template-columns:1fr 1fr}.location:first-child{grid-row:auto}}
+    @media (max-width:650px){.container{width:min(var(--max),calc(100% - 28px))}.hero h1{font-size:82px}.hero-copy{font-size:14px}.section-head{display:block}.copy{margin-top:18px}section{padding:82px 0}.games,.characters,.pathogens,.factions,.locations{grid-template-columns:1fr}.game,.game-body{min-height:285px}.timeline::before{display:none}.event{grid-template-columns:1fr;gap:8px}.year{text-align:left;color:var(--red)}.footer-inner{flex-direction:column;align-items:flex-start}.scroll-cue{display:none}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Biohazard Archive home"><span class="mark" aria-hidden="true"></span><span>Biohazard <small>Archive</small></span></a>
+      <div class="links"><a href="#games">Games</a><a href="#characters">Operatives</a><a href="#timeline">Timeline</a><a href="#pathogens">Pathogens</a><a href="#factions">Factions</a><a href="#locations">Locations</a></div>
+      <div class="status"><span class="dot"></span>Archive online</div>
+      <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobilePanel">Menu</button>
+    </div>
+  </nav>
+  <div class="mobile-panel" id="mobilePanel"><a href="#games">Games</a><a href="#characters">Operatives</a><a href="#timeline">Timeline</a><a href="#pathogens">Pathogens</a><a href="#factions">Factions</a><a href="#locations">Locations</a></div>
+
+  <header class="hero" id="top">
+    <div class="grid"></div><div class="glow"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="classification">Classified incident database // clearance red</div>
+        <h1>Resident <span>Evil</span></h1>
+        <p class="hero-copy">A cinematic fan archive documenting the outbreaks, survivors, agents, corporations, pathogens and locations that define the Resident Evil universe. Built as an unofficial web-design practice project.</p>
+        <div class="actions"><a class="btn primary" href="#games">Enter database</a><button class="btn" id="scannerBtn">Toggle scanner</button></div>
+      </div>
+      <div class="hero-stats"><div class="stat"><strong>1998</strong><small>Raccoon incident</small></div><div class="stat"><strong>S.T.A.R.S.</strong><small>Special unit</small></div><div class="stat"><strong>10+</strong><small>Major files</small></div><div class="stat"><strong>RE</strong><small>Archive series</small></div></div>
+    </div>
+    <a class="scroll-cue" href="#games" aria-label="Scroll to archive"></a>
+  </header>
+
+  <main>
+    <section id="games"><div class="container">
+      <div class="section-head reveal"><div><div class="eyebrow">Archive 01</div><h2 class="title">Incident<br>Database</h2></div><p class="copy">Browse major games and incidents, then filter the archive by title, character, year, location, faction or pathogen.</p></div>
+      <div class="terminal reveal"><div class="terminal-label">BIOHAZARD_DATABASE://SEARCH_RECORDS</div><input class="search" id="archiveSearch" type="search" placeholder="Search Resident Evil 4, Leon, Raccoon City, T-Virus..." aria-label="Search archive"></div>
+      <div class="games" id="gameGrid"></div>
+    </div></section>
+
+    <section id="characters"><div class="container">
+      <div class="section-head reveal"><div><div class="eyebrow">Archive 02</div><h2 class="title">Personnel<br>Files</h2></div><p class="copy">Survivors, operatives, agents and antagonists connected to the franchise's most dangerous biological incidents.</p></div>
+      <div class="characters" id="characterGrid"></div>
+    </div></section>
+
+    <section id="timeline"><div class="container">
+      <div class="section-head reveal"><div><div class="eyebrow">Archive 03</div><h2 class="title">Outbreak<br>Timeline</h2></div><p class="copy">A simplified chronology tracing the rise of Umbrella, the fall of Raccoon City and the expansion of bioterror threats.</p></div>
+      <div class="timeline" id="timelineGrid"></div>
+    </div></section>
+
+    <section id="pathogens"><div class="container">
+      <div class="section-head reveal"><div><div class="eyebrow">Archive 04</div><h2 class="title">Biological<br>Threats</h2></div><p class="copy">Experimental viruses, parasites and fungal organisms responsible for many of the series' mutations and B.O.W. programs.</p></div>
+      <div class="pathogens" id="pathogenGrid"></div>
+    </div></section>
+
+    <section id="factions"><div class="container">
+      <div class="section-head reveal"><div><div class="eyebrow">Archive 05</div><h2 class="title">Organizations<br>& Factions</h2></div><p class="copy">Corporate research divisions, police units, counter-bioterror groups and covert organizations shaping the conflict.</p></div>
+      <div class="factions" id="factionGrid"></div>
+    </div></section>
+
+    <section id="locations"><div class="container">
+      <div class="section-head reveal"><div><div class="eyebrow">Archive 06</div><h2 class="title">Incident<br>Locations</h2></div><p class="copy">Sites connected to outbreaks, laboratories, disappearances and some of the franchise's most memorable survival-horror settings.</p></div>
+      <div class="locations" id="locationGrid"></div>
+    </div></section>
+  </main>
+
+  <footer><div class="container footer-inner"><div class="warning">Unofficial fan project / web-design practice archive. Resident Evil and related characters, names and trademarks belong to their respective rights holders. This site is not affiliated with Capcom.</div><div>BIOHAZARD ARCHIVE // ACCESS TERMINATED</div></div></footer>
+
+  <script>
+    const games=[
+      ['00','2002','Resident Evil 0','Rebecca Chambers and Billy Coen uncover an early chapter of the Umbrella conspiracy aboard the Ecliptic Express.','rgba(90,70,40,.48)'],
+      ['01','1996','Resident Evil','S.T.A.R.S. investigates murders near Raccoon City and discovers the horrors hidden inside the Spencer Mansion.','rgba(125,0,0,.55)'],
+      ['02','1998','Resident Evil 2','Leon S. Kennedy and Claire Redfield arrive during the catastrophic Raccoon City outbreak.','rgba(170,10,10,.55)'],
+      ['03','1999','Resident Evil 3','Jill Valentine attempts to escape Raccoon City while being hunted by the relentless Nemesis.','rgba(100,0,0,.58)'],
+      ['CV','2000','Code: Veronica','Claire Redfield\'s search for Chris leads to another Umbrella-linked nightmare far from Raccoon City.','rgba(90,30,30,.52)'],
+      ['04','2005','Resident Evil 4','Leon travels to rural Europe and encounters Los Illuminados and the parasitic Las Plagas.','rgba(120,70,15,.44)'],
+      ['05','2009','Resident Evil 5','Chris Redfield and Sheva Alomar investigate a bioterror incident tied to a familiar enemy.','rgba(120,75,0,.38)'],
+      ['06','2012','Resident Evil 6','Multiple protagonists face a worldwide series of bioterror attacks involving the C-virus.','rgba(95,20,15,.45)'],
+      ['07','2017','Resident Evil 7','Ethan Winters searches for his missing wife inside the isolated Baker estate in Louisiana.','rgba(75,100,30,.36)'],
+      ['08','2021','Resident Evil Village','Ethan\'s story continues in a remote European village ruled by dangerous and mysterious figures.','rgba(80,70,85,.42)']
+    ];
+    const characters=[
+      ['FILE // STARS-001','Jill Valentine','S.T.A.R.S. / B.S.A.A.','Veteran survivor of the Spencer Mansion incident and a central figure in the fight against biological weapons.'],
+      ['FILE // RPD-021','Leon S. Kennedy','R.P.D. / Federal Agent','A rookie officer during the Raccoon City outbreak who later becomes an experienced government operative.'],
+      ['FILE // CIV-019','Claire Redfield','TerraSave','A Raccoon City survivor whose search for Chris draws her into Umbrella\'s experiments and later humanitarian work.'],
+      ['FILE // BSAA-005','Chris Redfield','S.T.A.R.S. / B.S.A.A.','A survivor of the mansion incident and longtime combatant against Umbrella and global bioterrorism.'],
+      ['FILE // UNKNOWN','Ada Wong','Classified Operative','An elusive intelligence operative whose missions repeatedly intersect with Leon and major biohazard incidents.'],
+      ['FILE // UMB-000','Albert Wesker','Umbrella / Classified','Former S.T.A.R.S. captain whose ambitions place him at the center of numerous biological conspiracies.'],
+      ['FILE // CIV-E001','Ethan Winters','Civilian','A civilian pulled into a biological nightmare while searching for his missing wife, Mia.'],
+      ['FILE // UBCS-003','Carlos Oliveira','U.B.C.S.','A mercenary deployed during the Raccoon City disaster who becomes an important ally to Jill Valentine.'],
+      ['FILE // STARS-014','Rebecca Chambers','S.T.A.R.S. Bravo Team','A gifted medic and scientist whose encounter with Umbrella begins before the Spencer Mansion incident.']
+    ];
+    const timeline=[
+      ['1960s','Origins of Umbrella','Research into unusual viral organisms lays the groundwork for the corporation and its later biological-weapons programs.'],
+      ['1998','Arklay Mountains Incident','S.T.A.R.S. investigates murders near Raccoon City and uncovers experiments connected to the Spencer Mansion.'],
+      ['1998','Raccoon City Outbreak','The infection spreads through the city, producing one of the defining biological disasters of the franchise.'],
+      ['2000s','Global Bioterror Era','Biological weapons escape the control of a single corporation and become an international security threat.'],
+      ['2017+','Mold Incidents','Fungal-based organisms introduce a different form of infection, mutation and shared consciousness.']
+    ];
+    const pathogens=[
+      ['SPECIMEN // T','T-Virus','One of Umbrella\'s most infamous viral weapons, associated with mass infection, mutation and numerous B.O.W. projects.'],
+      ['SPECIMEN // G','G-Virus','A highly unstable mutagen capable of producing rapid and extreme biological changes in infected hosts.'],
+      ['SPECIMEN // PLAGA','Las Plagas','Parasitic organisms capable of controlling hosts while preserving many higher cognitive functions.'],
+      ['SPECIMEN // MOLD','Mutamycete','A fungal biological organism central to incidents involving the Baker estate and the Winters family.']
+    ];
+    const factions=[
+      ['UMB','Umbrella Corporation','A pharmaceutical and biotechnology giant whose secret research programs drive many of the earliest disasters.'],
+      ['S.T.','S.T.A.R.S.','Raccoon City\'s Special Tactics and Rescue Service, whose members become some of Umbrella\'s earliest major opponents.'],
+      ['B.S.','B.S.A.A.','An international counter-bioterror organization formed to respond to the worldwide spread of biological weapons.'],
+      ['RPD','R.P.D.','The Raccoon Police Department becomes one of the central battlegrounds during the 1998 citywide outbreak.'],
+      ['TRS','TerraSave','A non-governmental organization focused on assisting victims of bioterrorism and biological disasters.']
+    ];
+    const locations=[
+      ['UNITED STATES // 1998','Raccoon City'],['ARKLAY MOUNTAINS','Spencer Mansion'],['RACCOON CITY','R.P.D.'],['EUROPE','The Village'],['LOUISIANA','Baker Estate']
+    ];
+
+    const gameGrid=document.querySelector('#gameGrid');
+    const characterGrid=document.querySelector('#characterGrid');
+    const timelineGrid=document.querySelector('#timelineGrid');
+    const pathogenGrid=document.querySelector('#pathogenGrid');
+    const factionGrid=document.querySelector('#factionGrid');
+    const locationGrid=document.querySelector('#locationGrid');
+
+    games.forEach((g,i)=>{const el=document.createElement('article');el.className='card game reveal searchable';el.dataset.search=g.join(' ').toLowerCase();el.style.setProperty('--accent',g[4]);el.style.setProperty('--x',`${25+(i%4)*18}%`);el.innerHTML=`<div class="game-bg"></div><div class="num">${g[0]}</div><div class="game-body"><div class="meta">INCIDENT // ${g[1]}</div><h3>${g[2]}</h3><p>${g[3]}</p></div>`;gameGrid.appendChild(el)});
+    characters.forEach(c=>{const el=document.createElement('article');el.className='card dossier reveal searchable';el.dataset.search=c.join(' ').toLowerCase();el.innerHTML=`<div class="file">${c[0]}</div><h3>${c[1]}</h3><div class="role">${c[2]}</div><p>${c[3]}</p>`;characterGrid.appendChild(el)});
+    timeline.forEach(t=>{const el=document.createElement('article');el.className='event reveal searchable';el.dataset.search=t.join(' ').toLowerCase();el.innerHTML=`<div class="year">${t[0]}</div><div class="event-body"><h3>${t[1]}</h3><p>${t[2]}</p></div>`;timelineGrid.appendChild(el)});
+    pathogens.forEach(p=>{const el=document.createElement('article');el.className='card pathogen reveal searchable';el.dataset.search=p.join(' ').toLowerCase();el.innerHTML=`<div class="specimen"></div><small>${p[0]}</small><h3>${p[1]}</h3><p>${p[2]}</p>`;pathogenGrid.appendChild(el)});
+    factions.forEach(f=>{const el=document.createElement('article');el.className='card faction reveal searchable';el.dataset.search=f.join(' ').toLowerCase();el.innerHTML=`<div class="stamp">${f[0]}</div><h3>${f[1]}</h3><p>${f[2]}</p>`;factionGrid.appendChild(el)});
+    locations.forEach(l=>{const el=document.createElement('article');el.className='card location reveal searchable';el.dataset.search=l.join(' ').toLowerCase();el.innerHTML=`<div class="location-info"><small>${l[0]}</small><h3>${l[1]}</h3></div>`;locationGrid.appendChild(el)});
+
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');observer.unobserve(e.target)}}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    document.querySelector('#archiveSearch').addEventListener('input',e=>{const q=e.target.value.toLowerCase().trim();document.querySelectorAll('.searchable').forEach(el=>el.style.display=(el.dataset.search||'').includes(q)?'':'none')});
+    document.querySelector('#scannerBtn').addEventListener('click',e=>{document.body.classList.toggle('scanner');e.currentTarget.textContent=document.body.classList.contains('scanner')?'Disable scanner':'Toggle scanner'});
+    const menuBtn=document.querySelector('#menuBtn'),mobilePanel=document.querySelector('#mobilePanel');
+    menuBtn.addEventListener('click',()=>{const open=mobilePanel.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open))});
+    mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobilePanel.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}));
+
+    if(matchMedia('(pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+      document.addEventListener('mousemove',e=>document.querySelectorAll('.game').forEach(card=>{const r=card.getBoundingClientRect();if(e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom){const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(900px) rotateX(${-y*4}deg) rotateY(${x*5}deg) translateY(-6px)`}else card.style.transform=''}));
+    }
+  </script>
+</body>
+</html>
