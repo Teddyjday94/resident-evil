@@ -4,6 +4,18 @@
   const qa = (selector, root = document) => [...root.querySelectorAll(selector)];
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  const bowMedia = {
+    'Tyrant T-002': { image:'https://residentevilpodcast.com/wp-content/uploads/2021/08/supertyantRE2.png', position:'50% 28%', credit:'Resident Evil Podcast' },
+    'Hunter': { image:'https://www.residentevilcenter.net/old/games/residentevilds/images/render_hunter.jpg', position:'50% 32%', credit:'Resident Evil Center' },
+    'Licker': { image:'https://image.gamer.ne.jp/news/2012/20120425/000167384b2b37fc0d2bd19700dbbfe899e0/o/12.jpg', position:'50% 42%', credit:'Gamer / Resident Evil' },
+    'Mr. X / T-00': { image:'https://game.capcom.com/manual/resistance/locale_resistance/page/37_3_1.jpg', position:'50% 22%', credit:'Capcom / RE Resistance' },
+    'Nemesis-T Type': { image:'https://static.zerochan.net/Nemesis.%28Biohazard%29.full.2886030.jpg', position:'50% 18%', credit:'Capcom character render' },
+    'Regenerator': { image:'https://pbs.twimg.com/media/FsDDKWDWYAA6pP2.jpg', position:'50% 48%', credit:'Resident Evil 4 Remake screenshot' },
+    'Uroboros': { image:'https://i2.wp.com/images1.wikia.nocookie.net/__cb20101202100717/residentevil/images/4/45/Re5_194.jpg', position:'50% 45%', credit:'Resident Evil 5 reference' },
+    'Molded': { image:'https://residentevilpodcast.com/wp-content/uploads/2021/12/moldedre7.png', position:'50% 25%', credit:'Resident Evil Podcast' },
+    'Varcolac': { image:'https://media.distractify.com/brand-img/OdnKZ76L3/0x0/werewolf-resident-evil-village-1623102815599.jpg', position:'50% 45%', credit:'Resident Evil Village reference' }
+  };
+
   const escapeText = (value) => String(value ?? '').replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch]));
   const fallbackImage = (img, label) => {
     img.addEventListener('error', () => {
@@ -42,9 +54,12 @@
     bowGrid.innerHTML = '';
     data.bows.filter(b => filter === 'all' || b.threat === filter).forEach((bow) => {
       const el = document.createElement('article');
-      el.className = 'bow-card reveal searchable';
+      const media = bowMedia[bow.name];
+      el.className = `bow-card reveal searchable${media ? ' has-media' : ''}`;
       el.dataset.search = [bow.name, bow.type, bow.threat, bow.source, bow.debut].join(' ').toLowerCase();
-      el.innerHTML = `<div class="bow-top"><span>${escapeText(bow.code)}</span><span class="threat ${bow.threat.toLowerCase()}">${escapeText(bow.threat)} THREAT</span></div><div class="bow-symbol" aria-hidden="true">${escapeText(bow.code.slice(-3))}</div><h3>${escapeText(bow.name)}</h3><p>${escapeText(bow.summary)}</p><div class="bow-foot"><span>${escapeText(bow.type)}</span><span>${escapeText(bow.source)}</span></div>`;
+      if (media) el.style.setProperty('--bow-position', media.position || '50% 50%');
+      el.innerHTML = `${media ? `<div class="bow-media"><img src="${escapeText(media.image)}" alt="${escapeText(bow.name)} reference image" loading="lazy"><span class="bow-credit">${escapeText(media.credit)}</span></div>` : `<div class="bow-symbol" aria-hidden="true">${escapeText(bow.code.slice(-3))}</div>`}<div class="bow-content"><div class="bow-top"><span>${escapeText(bow.code)}</span><span class="threat ${bow.threat.toLowerCase()}">${escapeText(bow.threat)} THREAT</span></div><h3>${escapeText(bow.name)}</h3><p>${escapeText(bow.summary)}</p><div class="bow-foot"><span>${escapeText(bow.type)}</span><span>${escapeText(bow.source)}</span></div></div>`;
+      const img = q('img', el); if (img) fallbackImage(img, bow.name.toUpperCase());
       bowGrid.appendChild(el);
     });
     observeReveals();
