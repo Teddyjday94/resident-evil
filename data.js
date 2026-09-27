@@ -1,0 +1,93 @@
+window.RE_ARCHIVE = {
+  games: [
+    { id:'re0', code:'00', year:'2002', title:'Resident Evil 0', era:'Origins', summary:'Rebecca Chambers and Billy Coen uncover an early chapter of the Umbrella conspiracy aboard the Ecliptic Express.', tags:['Rebecca','Umbrella','Arklay','T-Virus'] },
+    { id:'re1', code:'01', year:'1996', title:'Resident Evil', era:'Mansion Incident', summary:'S.T.A.R.S. investigates murders near Raccoon City and discovers the horrors hidden inside the Spencer Mansion.', tags:['Jill','Chris','Wesker','Spencer Mansion'] },
+    { id:'re2', code:'02', year:'1998', title:'Resident Evil 2', era:'Raccoon City', summary:'Leon S. Kennedy and Claire Redfield arrive during the catastrophic Raccoon City outbreak.', tags:['Leon','Claire','R.P.D.','G-Virus'] },
+    { id:'re3', code:'03', year:'1999', title:'Resident Evil 3', era:'Raccoon City', summary:'Jill Valentine attempts to escape Raccoon City while being hunted by Nemesis.', tags:['Jill','Nemesis','Raccoon City','U.B.C.S.'] },
+    { id:'recv', code:'CV', year:'2000', title:'Code: Veronica', era:'Aftermath', summary:'Claire Redfield’s search for Chris leads to another Umbrella-linked nightmare far from Raccoon City.', tags:['Claire','Chris','Wesker','Umbrella'] },
+    { id:'re4', code:'04', year:'2005', title:'Resident Evil 4', era:'Plaga Incident', summary:'Leon travels to rural Europe and encounters Los Illuminados and the parasitic Las Plagas.', tags:['Leon','Ada','Las Plagas','Europe'] },
+    { id:'re5', code:'05', year:'2009', title:'Resident Evil 5', era:'Global Bioterror', summary:'Chris Redfield and Sheva Alomar investigate a bioterror incident tied to a familiar enemy.', tags:['Chris','Wesker','B.S.A.A.','Uroboros'] },
+    { id:'re6', code:'06', year:'2012', title:'Resident Evil 6', era:'Global Bioterror', summary:'Multiple protagonists face a worldwide series of bioterror attacks involving the C-virus.', tags:['Leon','Chris','Ada','C-Virus'] },
+    { id:'re7', code:'07', year:'2017', title:'Resident Evil 7 biohazard', era:'Mold Incident', summary:'Ethan Winters searches for his missing wife inside the isolated Baker estate in Louisiana.', tags:['Ethan','Mia','Baker Estate','Mold'] },
+    { id:'re8', code:'08', year:'2021', title:'Resident Evil Village', era:'Village Incident', summary:'Ethan’s story continues in a remote European village ruled by dangerous and mysterious figures.', tags:['Ethan','Village','Mutamycete','B.S.A.A.'] },
+    { id:'re2r', code:'2R', year:'2019', title:'Resident Evil 2 Remake', era:'Reimagined Raccoon City', summary:'A modern reimagining of Leon and Claire’s first night in Raccoon City.', tags:['Leon','Claire','Mr. X','R.P.D.'] },
+    { id:'re4r', code:'4R', year:'2023', title:'Resident Evil 4 Remake', era:'Reimagined Plaga Incident', summary:'Leon’s rescue mission returns with a darker, more grounded take on the European incident.', tags:['Leon','Ashley','Ada','Las Plagas'] }
+  ],
+
+  characters: [
+    { id:'jill', file:'STARS-001', name:'Jill Valentine', role:'S.T.A.R.S. / B.S.A.A.', status:'Active', first:'Resident Evil', summary:'Veteran survivor of the Spencer Mansion incident and one of the franchise’s defining anti-bioterror operatives.', bio:'Jill survives the Arklay Mansion incident, helps expose Umbrella’s crimes, escapes the destruction of Raccoon City, and later becomes a central figure in international anti-bioterror operations.', image:'https://cdn.capcom-unity.com/2026/02/Raccoon-City-lovers_nero-Final-1024x576.jpg', imagePosition:'35% 50%', incidents:['Spencer Mansion','Raccoon City','Kijuju'], affiliations:['S.T.A.R.S.','B.S.A.A.'] },
+    { id:'leon', file:'RPD-021', name:'Leon S. Kennedy', role:'R.P.D. / Federal Agent', status:'Active', first:'Resident Evil 2', summary:'A rookie police officer during the Raccoon City outbreak who later becomes an elite federal agent.', bio:'Leon arrives in Raccoon City for his first day on the police force and is immediately thrown into the citywide outbreak. His survival leads to a career handling some of the world’s most dangerous bioterror incidents.', image:'https://cdn.capcom-unity.com/2023/11/Leon-Claire-iryukxx-Final-1024x1024.jpg', imagePosition:'50% 25%', incidents:['Raccoon City','Los Illuminados','Tall Oaks'], affiliations:['R.P.D.','U.S. Government'] },
+    { id:'claire', file:'CIV-019', name:'Claire Redfield', role:'TerraSave', status:'Active', first:'Resident Evil 2', summary:'A Raccoon City survivor whose search for Chris draws her into Umbrella’s experiments and later humanitarian work.', bio:'Claire enters Raccoon City while looking for her brother Chris. After surviving the outbreak, she becomes a prominent advocate for victims of bioterror and continues crossing paths with major outbreaks.', image:'https://cdn.capcom-unity.com/2023/11/Leon-Claire-Juli__Gamer-Final-1024x754.jpg', imagePosition:'50% 45%', incidents:['Raccoon City','Rockfort Island','Harvardville'], affiliations:['TerraSave'] },
+    { id:'chris', file:'BSAA-005', name:'Chris Redfield', role:'S.T.A.R.S. / B.S.A.A.', status:'Active', first:'Resident Evil', summary:'A survivor of the mansion incident and longtime combatant against Umbrella and global bioterrorism.', bio:'Chris begins as a member of S.T.A.R.S. Alpha Team and becomes one of the longest-serving protagonists in the series, repeatedly confronting large-scale B.O.W. threats around the world.', image:'https://cdn.capcom-unity.com/2026/04/Stars-juniaxe-Final-1024x576.jpg', imagePosition:'50% 45%', incidents:['Spencer Mansion','Kijuju','Edonia'], affiliations:['S.T.A.R.S.','B.S.A.A.'] },
+    { id:'ada', file:'UNKNOWN', name:'Ada Wong', role:'Classified Operative', status:'Unknown', first:'Resident Evil 2', summary:'An elusive intelligence operative whose missions repeatedly intersect with Leon and major biohazard incidents.', bio:'Ada’s employers and loyalties are deliberately obscured. She repeatedly appears at the center of high-value biological weapons operations, often pursuing samples while maintaining her own agenda.', image:'https://cdn.capcom-unity.com/2026/02/Survivors-juniaxe-Final-1024x576.jpg', imagePosition:'58% 45%', incidents:['Raccoon City','Los Illuminados','Tall Oaks'], affiliations:['Classified'] },
+    { id:'wesker', file:'UMB-000', name:'Albert Wesker', role:'Umbrella / Classified', status:'Deceased', first:'Resident Evil', summary:'Former S.T.A.R.S. captain whose ambitions place him at the center of numerous biological conspiracies.', bio:'Wesker infiltrates S.T.A.R.S. while secretly serving Umbrella interests. His pursuit of viral power and control turns him into one of the franchise’s most persistent antagonists.', image:'https://cdn.capcom-unity.com/2026/04/Stars-juniaxe-Final-1024x576.jpg', imagePosition:'76% 40%', incidents:['Spencer Mansion','Rockfort Island','Kijuju'], affiliations:['Umbrella','S.T.A.R.S.'] },
+    { id:'ethan', file:'CIV-E001', name:'Ethan Winters', role:'Civilian', status:'Classified', first:'Resident Evil 7', summary:'A civilian pulled into a biological nightmare while searching for his missing wife, Mia.', bio:'Ethan’s search for Mia brings him to the Baker estate and exposes him to the Mold. His story later expands into the European village incident and the truth behind the Winters family.', image:null, incidents:['Baker Estate','Village'], affiliations:['Civilian'] },
+    { id:'carlos', file:'UBCS-003', name:'Carlos Oliveira', role:'U.B.C.S.', status:'Unknown', first:'Resident Evil 3', summary:'A mercenary deployed during the Raccoon City disaster who becomes an important ally to Jill Valentine.', bio:'Carlos arrives as part of Umbrella’s Biohazard Countermeasure Service. As the disaster unfolds, he rejects the corporation’s secrecy and works to help survivors escape.', image:null, incidents:['Raccoon City'], affiliations:['U.B.C.S.'] },
+    { id:'rebecca', file:'STARS-014', name:'Rebecca Chambers', role:'S.T.A.R.S. Bravo Team', status:'Active', first:'Resident Evil 0', summary:'A gifted medic and scientist whose encounter with Umbrella begins before the Spencer Mansion incident.', bio:'Rebecca survives the Ecliptic Express and Umbrella Training Facility incidents before joining the surviving S.T.A.R.S. members at the Spencer Mansion.', image:'https://cdn.capcom-unity.com/2026/04/Stars-juniaxe-Final-1024x576.jpg', imagePosition:'24% 45%', incidents:['Ecliptic Express','Spencer Mansion'], affiliations:['S.T.A.R.S.'] }
+  ],
+
+  bows: [
+    { code:'BOW-001', name:'Tyrant T-002', type:'Tyrant', threat:'Severe', source:'T-Virus', debut:'Resident Evil', summary:'An early humanoid B.O.W. engineered for combat performance and extreme resilience.' },
+    { code:'BOW-002', name:'Hunter', type:'Hunter', threat:'High', source:'T-Virus', debut:'Resident Evil', summary:'A reptilian combat organism designed to outperform standard infected subjects.' },
+    { code:'BOW-003', name:'Licker', type:'Mutant', threat:'High', source:'T-Virus', debut:'Resident Evil 2', summary:'An advanced mutation recognized by exposed brain tissue, elongated tongue and wall-crawling mobility.' },
+    { code:'BOW-004', name:'Mr. X / T-00', type:'Tyrant', threat:'Severe', source:'T-Virus', debut:'Resident Evil 2', summary:'A trench-coated Tyrant deployed into Raccoon City to pursue mission objectives with relentless persistence.' },
+    { code:'BOW-005', name:'Nemesis-T Type', type:'Nemesis', threat:'Critical', source:'NE-α / T-Virus', debut:'Resident Evil 3', summary:'A specialized Tyrant augmented with a parasite and tasked with eliminating surviving S.T.A.R.S. members.' },
+    { code:'BOW-006', name:'Regenerator', type:'Plaga Host', threat:'Severe', source:'Las Plagas', debut:'Resident Evil 4', summary:'A laboratory-created Plaga host capable of rapidly regenerating otherwise catastrophic damage.' },
+    { code:'BOW-007', name:'Uroboros', type:'Viral Organism', threat:'Critical', source:'Uroboros Virus', debut:'Resident Evil 5', summary:'An unstable viral organism producing massive black tendril-like growths in incompatible hosts.' },
+    { code:'BOW-008', name:'Molded', type:'Fungal B.O.W.', threat:'High', source:'Mutamycete', debut:'Resident Evil 7', summary:'Humanoid fungal creatures generated through Mold infection and biomass.' },
+    { code:'BOW-009', name:'Varcolac', type:'Lycan Variant', threat:'Severe', source:'Cadou / Mold', debut:'Resident Evil Village', summary:'A massive lycanthropic creature associated with the Village incident.' }
+  ],
+
+  timeline: [
+    { year:'1960s', title:'Origins of Umbrella', text:'Research into unusual viral organisms lays the groundwork for the corporation and its biological-weapons programs.' },
+    { year:'July 1998', title:'Arklay Mountains Incident', text:'S.T.A.R.S. investigates murders near Raccoon City and uncovers experiments connected to the Spencer Mansion.' },
+    { year:'Sep. 1998', title:'Raccoon City Outbreak', text:'The infection spreads through the city, producing one of the defining biological disasters of the franchise.' },
+    { year:'2004', title:'Umbrella Falls', text:'The original corporation collapses, but its research and biological weapons continue circulating.' },
+    { year:'2009', title:'Kijuju Incident', text:'B.S.A.A. forces confront a major Uroboros outbreak and the endgame of Albert Wesker.' },
+    { year:'2012–13', title:'Global C-Virus Attacks', text:'Multiple international incidents demonstrate the worldwide scale of organized bioterrorism.' },
+    { year:'2017', title:'Baker Estate', text:'A missing-person search uncovers a Mold-based bioweapon and the E-series project.' },
+    { year:'2021', title:'Village Incident', text:'The Winters case expands into a remote European settlement tied to the origin of the Mold research.' }
+  ],
+
+  pathogens: [
+    { code:'SPECIMEN // T', name:'T-Virus', family:'Progenitor-derived', level:'Red', text:'One of Umbrella’s most infamous viral weapons, associated with mass infection, mutation and numerous B.O.W. projects.' },
+    { code:'SPECIMEN // G', name:'G-Virus', family:'Golgotha', level:'Crimson', text:'A highly unstable mutagen capable of producing rapid, extreme biological changes and unusual reproductive behavior.' },
+    { code:'SPECIMEN // PLAGA', name:'Las Plagas', family:'Parasite', level:'Amber', text:'Parasitic organisms capable of controlling hosts while preserving many higher cognitive functions.' },
+    { code:'SPECIMEN // URO', name:'Uroboros', family:'Progenitor-derived', level:'Black', text:'A selective virus intended to trigger radical mutation, with catastrophic results in incompatible hosts.' },
+    { code:'SPECIMEN // C', name:'C-Virus', family:'Chrysalid', level:'Orange', text:'A mutagenic weapon associated with rapid transformation, cocoons and widely varied infected forms.' },
+    { code:'SPECIMEN // MOLD', name:'Mutamycete', family:'Fungal', level:'White', text:'A fungal organism capable of infection, regeneration and shared neurological connections across hosts.' }
+  ],
+
+  factions: [
+    { abbr:'UMB', name:'Umbrella Corporation', text:'A pharmaceutical and biotechnology giant whose secret research programs drive many of the earliest disasters.' },
+    { abbr:'S.T.', name:'S.T.A.R.S.', text:'Raccoon City’s Special Tactics and Rescue Service, whose members become some of Umbrella’s earliest major opponents.' },
+    { abbr:'B.S.', name:'B.S.A.A.', text:'An international counter-bioterror organization formed to respond to the worldwide spread of biological weapons.' },
+    { abbr:'RPD', name:'R.P.D.', text:'The Raccoon Police Department becomes one of the central battlegrounds during the 1998 citywide outbreak.' },
+    { abbr:'TRS', name:'TerraSave', text:'A non-governmental organization focused on assisting victims of bioterrorism and biological disasters.' }
+  ],
+
+  locations: [
+    { code:'UNITED STATES // 1998', name:'Raccoon City', note:'Ground zero for the franchise’s most infamous urban outbreak.', image:'https://cdn.capcom-unity.com/2026/02/Raccoon-City-lovers_nero-Final-1024x576.jpg' },
+    { code:'ARKLAY MOUNTAINS', name:'Spencer Mansion', note:'The isolated estate concealing Umbrella’s underground laboratory network.', image:null },
+    { code:'RACCOON CITY', name:'R.P.D.', note:'A converted museum that becomes a fortress for survivors during the outbreak.', image:'https://cdn.capcom-unity.com/2026/02/Raccoon-City-Photo_Resume-Final-1024x576.jpg' },
+    { code:'EUROPE', name:'The Village', note:'A remote settlement linked to Las Plagas and Los Illuminados.', image:null },
+    { code:'LOUISIANA', name:'Baker Estate', note:'A decaying rural property consumed by a Mold-based biological incident.', image:null }
+  ],
+
+  mapPoints: [
+    { id:'rpd', label:'R.P.D.', x:31, y:31, risk:'SEVERE', title:'Raccoon Police Department', text:'A key refuge and battleground during the September 1998 outbreak. Beneath it, survivors discover routes tied to Umbrella infrastructure.' },
+    { id:'hospital', label:'Hospital', x:69, y:31, risk:'HIGH', title:'Spencer Memorial Hospital', text:'Medical facilities become overrun as the infection spreads, turning emergency treatment zones into quarantine failures.' },
+    { id:'orphanage', label:'Orphanage', x:77, y:58, risk:'HIGH', title:'Raccoon City Orphanage', text:'A seemingly ordinary institution hiding connections to Umbrella-linked experimentation.' },
+    { id:'lab', label:'NEST', x:52, y:76, risk:'CRITICAL', title:'NEST Laboratory', text:'An underground Umbrella research complex containing high-value viral research and dangerous experimental subjects.' },
+    { id:'subway', label:'Subway', x:24, y:67, risk:'ELEVATED', title:'Subway Network', text:'One of the few potential evacuation paths during the citywide disaster, repeatedly compromised by infected creatures.' },
+    { id:'clocktower', label:'Clock Tower', x:53, y:43, risk:'SEVERE', title:'St. Michael Clock Tower', text:'A recognizable city landmark and a major navigation point during the collapse of Raccoon City.' }
+  ],
+
+  media: [
+    { title:'R.P.D. in the Rain', credit:'Capcom Snapshots / Photo_Resume', source:'Capcom-hosted community screenshot', image:'https://cdn.capcom-unity.com/2026/02/Raccoon-City-Photo_Resume-Final-1024x576.jpg' },
+    { title:'Raccoon City Burns', credit:'Capcom Snapshots / lovers_nero', source:'Capcom-hosted community screenshot', image:'https://cdn.capcom-unity.com/2026/02/Raccoon-City-lovers_nero-Final-1024x576.jpg' },
+    { title:'Leon S. Kennedy', credit:'Capcom Snapshots / iryukxx', source:'Capcom-hosted community screenshot', image:'https://cdn.capcom-unity.com/2023/11/Leon-Claire-iryukxx-Final-1024x1024.jpg' },
+    { title:'Claire at the R.P.D.', credit:'Capcom Snapshots / juli__gamer', source:'Capcom-hosted community screenshot', image:'https://cdn.capcom-unity.com/2023/11/Leon-Claire-Juli__Gamer-Final-1024x754.jpg' },
+    { title:'After Raccoon City', credit:'Capcom Snapshots / smthvalentine', source:'Capcom-hosted community screenshot', image:'https://cdn.capcom-unity.com/2023/11/Leon-Claire-smthvalentine-Final-1024x576.jpg' }
+  ]
+};
