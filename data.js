@@ -13,7 +13,6 @@ window.RE_ARCHIVE = {
     { id:'re2r', code:'2R', year:'2019', title:'Resident Evil 2 Remake', era:'Reimagined Raccoon City', summary:'A modern reimagining of Leon and Claire’s first night in Raccoon City.', tags:['Leon','Claire','Mr. X','R.P.D.'], image:'https://cdn.akamai.steamstatic.com/steam/apps/883710/header.jpg', imagePosition:'50% 46%' },
     { id:'re4r', code:'4R', year:'2023', title:'Resident Evil 4 Remake', era:'Reimagined Plaga Incident', summary:'Leon’s rescue mission returns with a darker, more grounded take on the European incident.', tags:['Leon','Ashley','Ada','Las Plagas'], image:'https://cdn.akamai.steamstatic.com/steam/apps/2050650/header.jpg', imagePosition:'50% 43%' }
   ],
-
   characters: [
     { id:'jill', file:'STARS-001', name:'Jill Valentine', role:'S.T.A.R.S. / B.S.A.A.', status:'Active', first:'Resident Evil', summary:'Veteran survivor of the Spencer Mansion incident and one of the franchise’s defining anti-bioterror operatives.', bio:'Jill survives the Arklay Mansion incident, helps expose Umbrella’s crimes, escapes the destruction of Raccoon City, and later becomes a central figure in international anti-bioterror operations.', image:'https://cdn.capcom-unity.com/2026/02/Raccoon-City-lovers_nero-Final-1024x576.jpg', imagePosition:'35% 50%', incidents:['Spencer Mansion','Raccoon City','Kijuju'], affiliations:['S.T.A.R.S.','B.S.A.A.'] },
     { id:'leon', file:'RPD-021', name:'Leon S. Kennedy', role:'R.P.D. / Federal Agent', status:'Active', first:'Resident Evil 2', summary:'A rookie police officer during the Raccoon City outbreak who later becomes an elite federal agent.', bio:'Leon arrives in Raccoon City for his first day on the police force and is immediately thrown into the citywide outbreak. His survival leads to a career handling some of the world’s most dangerous bioterror incidents.', image:'https://cdn.capcom-unity.com/2023/11/Leon-Claire-iryukxx-Final-1024x1024.jpg', imagePosition:'50% 25%', incidents:['Raccoon City','Los Illuminados','Tall Oaks'], affiliations:['R.P.D.','U.S. Government'] },
@@ -25,7 +24,6 @@ window.RE_ARCHIVE = {
     { id:'carlos', file:'UBCS-003', name:'Carlos Oliveira', role:'U.B.C.S.', status:'Unknown', first:'Resident Evil 3', summary:'A mercenary deployed during the Raccoon City disaster who becomes an important ally to Jill Valentine.', bio:'Carlos arrives as part of Umbrella’s Biohazard Countermeasure Service. As the disaster unfolds, he rejects the corporation’s secrecy and works to help survivors escape.', image:'https://img.gamewith.jp/article/thumbnail/rectangle_l/194602.png?date=1585844329', imagePosition:'50% 30%', incidents:['Raccoon City'], affiliations:['U.B.C.S.'] },
     { id:'rebecca', file:'STARS-014', name:'Rebecca Chambers', role:'S.T.A.R.S. Bravo Team', status:'Active', first:'Resident Evil 0', summary:'A gifted medic and scientist whose encounter with Umbrella begins before the Spencer Mansion incident.', bio:'Rebecca survives the Ecliptic Express and Umbrella Training Facility incidents before joining the surviving S.T.A.R.S. members at the Spencer Mansion.', image:'https://cdn.capcom-unity.com/capcom-unity.com/user/harrisony/resident_evil/re0_comparison_screens/c015ad2c341013311eb9448b1a0c0eec.png?v=214060', imagePosition:'35% 40%', incidents:['Ecliptic Express','Spencer Mansion'], affiliations:['S.T.A.R.S.'] }
   ],
-
   bows: [
     { code:'BOW-001', name:'Tyrant T-002', type:'Tyrant', threat:'Severe', source:'T-Virus', debut:'Resident Evil', summary:'An early humanoid B.O.W. engineered for combat performance and extreme resilience.' },
     { code:'BOW-002', name:'Hunter', type:'Hunter', threat:'High', source:'T-Virus', debut:'Resident Evil', summary:'A reptilian combat organism designed to outperform standard infected subjects.' },
@@ -37,7 +35,6 @@ window.RE_ARCHIVE = {
     { code:'BOW-008', name:'Molded', type:'Fungal B.O.W.', threat:'High', source:'Mutamycete', debut:'Resident Evil 7', summary:'Humanoid fungal creatures generated through Mold infection and biomass.' },
     { code:'BOW-009', name:'Varcolac', type:'Lycan Variant', threat:'Severe', source:'Cadou / Mold', debut:'Resident Evil Village', summary:'A massive lycanthropic creature associated with the Village incident.' }
   ],
-
   timeline: [
     { year:'1960s', title:'Origins of Umbrella', text:'Research into unusual viral organisms lays the groundwork for the corporation and its biological-weapons programs.' },
     { year:'July 1998', title:'Arklay Mountains Incident', text:'S.T.A.R.S. investigates murders near Raccoon City and uncovers experiments connected to the Spencer Mansion.' },
@@ -48,7 +45,6 @@ window.RE_ARCHIVE = {
     { year:'2017', title:'Baker Estate', text:'A missing-person search uncovers a Mold-based bioweapon and the E-series project.' },
     { year:'2021', title:'Village Incident', text:'The Winters case expands into a remote European settlement tied to the origin of the Mold research.' }
   ],
-
   pathogens: [
     { code:'SPECIMEN // T', name:'T-Virus', family:'Progenitor-derived', level:'Red', text:'One of Umbrella’s most infamous viral weapons, associated with mass infection, mutation and numerous B.O.W. projects.' },
     { code:'SPECIMEN // G', name:'G-Virus', family:'Golgotha', level:'Crimson', text:'A highly unstable mutagen capable of producing rapid, extreme biological changes and unusual reproductive behavior.' },
@@ -57,7 +53,6 @@ window.RE_ARCHIVE = {
     { code:'SPECIMEN // C', name:'C-Virus', family:'Chrysalid', level:'Orange', text:'A mutagenic weapon associated with rapid transformation, cocoons and widely varied infected forms.' },
     { code:'SPECIMEN // MOLD', name:'Mutamycete', family:'Fungal', level:'White', text:'A fungal organism capable of infection, regeneration and shared neurological connections across hosts.' }
   ],
-
   factions: [
     { abbr:'UMB', name:'Umbrella Corporation', text:'A pharmaceutical and biotechnology giant whose secret research programs drive many of the earliest disasters.' },
     { abbr:'S.T.', name:'S.T.A.R.S.', text:'Raccoon City’s Special Tactics and Rescue Service, whose members become some of Umbrella’s earliest major opponents.' },
@@ -65,7 +60,6 @@ window.RE_ARCHIVE = {
     { abbr:'RPD', name:'R.P.D.', text:'The Raccoon Police Department becomes one of the central battlegrounds during the 1998 citywide outbreak.' },
     { abbr:'TRS', name:'TerraSave', text:'A non-governmental organization focused on assisting victims of bioterrorism and biological disasters.' }
   ],
-
   locations: [
     { code:'UNITED STATES // 1998', name:'Raccoon City', note:'Ground zero for the franchise’s most infamous urban outbreak.', image:'https://cdn.capcom-unity.com/2026/02/Raccoon-City-lovers_nero-Final-1024x576.jpg' },
     { code:'ARKLAY MOUNTAINS', name:'Spencer Mansion', note:'The isolated estate concealing Umbrella’s underground laboratory network.', image:'https://cdn.capcom-unity.com/capcom-unity.com/user/brelston/remake/2a1a45232c7c234f610ec567611dd78a.jpg?v=202200' },
@@ -73,7 +67,6 @@ window.RE_ARCHIVE = {
     { code:'EUROPE', name:'The Village', note:'A remote settlement linked to Las Plagas and Los Illuminados.', image:'https://cdn.shazoo.ru/520412_GqbmSPXIJm_resident_evil.jpg' },
     { code:'LOUISIANA', name:'Baker Estate', note:'A decaying rural property consumed by a Mold-based biological incident.', image:'https://cdn.mobygames.com/screenshots/7959441-resident-evil-7-biohazard-banned-footage-vol2-playstation-4-daug.jpg' }
   ],
-
   mapPoints: [
     { id:'rpd', label:'R.P.D.', x:31, y:31, risk:'SEVERE', title:'Raccoon Police Department', text:'A key refuge and battleground during the September 1998 outbreak. Beneath it, survivors discover routes tied to Umbrella infrastructure.' },
     { id:'hospital', label:'Hospital', x:69, y:31, risk:'HIGH', title:'Spencer Memorial Hospital', text:'Medical facilities become overrun as the infection spreads, turning emergency treatment zones into quarantine failures.' },
@@ -82,7 +75,6 @@ window.RE_ARCHIVE = {
     { id:'subway', label:'Subway', x:24, y:67, risk:'ELEVATED', title:'Subway Network', text:'One of the few potential evacuation paths during the citywide disaster, repeatedly compromised by infected creatures.' },
     { id:'clocktower', label:'Clock Tower', x:53, y:43, risk:'SEVERE', title:'St. Michael Clock Tower', text:'A recognizable city landmark and a major navigation point during the collapse of Raccoon City.' }
   ],
-
   media: [
     { title:'R.P.D. in the Rain', credit:'Capcom Snapshots / Photo_Resume', source:'Capcom-hosted community screenshot', image:'https://cdn.capcom-unity.com/2026/02/Raccoon-City-Photo_Resume-Final-1024x576.jpg' },
     { title:'Raccoon City Burns', credit:'Capcom Snapshots / lovers_nero', source:'Capcom-hosted community screenshot', image:'https://cdn.capcom-unity.com/2026/02/Raccoon-City-lovers_nero-Final-1024x576.jpg' },
@@ -115,4 +107,40 @@ window.RE_ARCHIVE = {
     re4r:{release:'March 2023',setting:'Rural Spain',overview:'Leon’s rescue mission returns in a darker reimagining centered on Las Plagas, Los Illuminados, and the struggle to extract Ashley Graham.',characterIds:['leon','ada'],bowIds:['regenerator'],pathogenIds:['las-plagas'],locationIds:[],incidentFacts:['Leon enters an isolated region while searching for Ashley Graham.','Las Plagas infection drives the cult’s control over the population.','Ada’s objectives repeatedly intersect with Leon’s mission.']}
   };
   data.games.forEach((game) => Object.assign(game, meta[game.id], {heroImage:game.image, heroPosition:game.imagePosition, weaponIds:[]}));
+})();
+
+(() => {
+  const data = window.RE_ARCHIVE;
+  const H = {re1:'https://cdn.akamai.steamstatic.com/steam/apps/4249100/header.jpg',recv:'https://i.jeuxactus.com/datas/jeux/r/e/resident-evil-code-veronica-x/xl/resident-evil-code-4e26073a612d4.jpg',re2:'https://cdn.akamai.steamstatic.com/steam/apps/883710/header.jpg',re4:'https://cdn.akamai.steamstatic.com/steam/apps/2050650/header.jpg',re5:'https://cdn.akamai.steamstatic.com/steam/apps/21690/header.jpg',re6:'https://cdn.akamai.steamstatic.com/steam/apps/221040/header.jpg',re7:'https://cdn.akamai.steamstatic.com/steam/apps/418370/header.jpg',re8:'https://cdn.akamai.steamstatic.com/steam/apps/1196590/header.jpg'};
+  data.weapons = [
+    {id:'samurai-edge',name:'Samurai Edge',class:'Handgun',ammo:'9mm',summary:'A customized S.T.A.R.S. sidearm associated with the unit’s veteran operatives.',image:H.re1,imagePosition:'50% 48%',gameIds:['re0','re1','re3'],characterIds:['jill','chris','rebecca'],variants:['Jill Model','Chris Model','Albert Model'],attachments:[]},
+    {id:'classic-shotgun',name:'Shotgun',class:'Shotgun',ammo:'12-gauge shells',summary:'A close-range long gun used throughout the Spencer Mansion incident.',image:H.re1,imagePosition:'50% 48%',gameIds:['re1'],characterIds:['jill','chris'],variants:[],attachments:[]},
+    {id:'grenade-launcher',name:'Grenade Launcher',class:'Launcher',ammo:'Grenade rounds',summary:'A heavy utility launcher used against clustered infected and larger B.O.W. threats.',image:H.re1,imagePosition:'50% 48%',gameIds:['re1','re3'],characterIds:['jill'],variants:[],attachments:[]},
+    {id:'magnum-revolver',name:'Magnum Revolver',class:'Magnum',ammo:'Magnum rounds',summary:'A high-powered sidearm reserved for the archive’s most dangerous encounters.',image:H.re1,imagePosition:'50% 48%',gameIds:['re1'],characterIds:['jill','chris'],variants:[],attachments:[]},
+    {id:'bow-gun',name:'Bow Gun',class:'Special',ammo:'Bow Gun arrows',summary:'Claire’s compact projectile weapon during the Rockfort Island incident.',image:H.recv,imagePosition:'50% 28%',gameIds:['recv'],characterIds:['claire'],variants:[],attachments:[]},
+    {id:'matilda',name:'Matilda',class:'Handgun',ammo:'9mm handgun ammo',summary:'Leon’s dependable polymer-frame handgun, adaptable through multiple custom parts.',image:'https://articles-img.sftcdn.net/auto-mapping-folder/sites/3/2019/01/matilda-1024x576.jpg',imagePosition:'50% 45%',gameIds:['re2','re2r'],characterIds:['leon'],variants:[],attachments:['High-Capacity Mag','Muzzle Brake','Gun Stock']},
+    {id:'w870',name:'W-870',class:'Shotgun',ammo:'12-gauge shotgun shells',summary:'A sturdy pump-action shotgun favored for close-quarters stopping power.',image:'https://static.accelerated-ideas.com/news/images/resident_evil_2_ps4_shotgun.jpg',imagePosition:'50% 45%',gameIds:['re2','re2r'],characterIds:['leon'],variants:[],attachments:['Long Barrel','Shotgun Stock']},
+    {id:'lightning-hawk',name:'Lightning Hawk',class:'Magnum',ammo:'.50 AE MAG',summary:'A powerful gas-operated magnum that combines accuracy with exceptional stopping power.',image:'https://cdn.mos.cms.futurecdn.net/ahKrXHyJTbUHGKQjgawc3V.jpg',imagePosition:'50% 50%',gameIds:['re2','re2r'],characterIds:['leon'],variants:[],attachments:['Long Barrel','Red Dot Sight']},
+    {id:'combat-knife',name:'Combat Knife',class:'Melee',ammo:'None',summary:'A survival knife used for emergency defense and utility during the Raccoon City incident.',image:H.re2,imagePosition:'50% 46%',gameIds:['re2','re2r'],characterIds:['leon','claire'],variants:[],attachments:[]},
+    {id:'chemical-flamethrower',name:'Chemical Flamethrower',class:'Special',ammo:'Fuel',summary:'An industrial flamethrower repurposed as a high-risk anti-B.O.W. weapon.',image:H.re2,imagePosition:'50% 46%',gameIds:['re2r'],characterIds:['leon'],variants:[],attachments:['Regulator']},
+    {id:'sg09r',name:'SG-09 R',class:'Handgun',ammo:'Handgun ammo',summary:'Leon’s customized service handgun for the reimagined Los Illuminados mission.',image:'https://cdn11.bigcommerce.com/s-9mcepdq780/images/stencil/1280x1280/products/2618/11267/7__43469.1712926369.jpg?c=2',imagePosition:'50% 35%',gameIds:['re4r'],characterIds:['leon'],variants:[],attachments:['Laser Sight']},
+    {id:'riot-gun',name:'Riot Gun',class:'Shotgun',ammo:'Shotgun shells',summary:'A semi-automatic shotgun built around controllable recoil and strong mid-range performance.',image:'https://cdn.mos.cms.futurecdn.net/amXSAp67dkjeBTcPEktaJG.jpg',imagePosition:'50% 45%',gameIds:['re4','re4r'],characterIds:['leon'],variants:[],attachments:[]},
+    {id:'broken-butterfly',name:'Broken Butterfly',class:'Magnum',ammo:'Magnum ammo',summary:'A vintage magnum revolver with extreme stopping power.',image:'https://cdn.mos.cms.futurecdn.net/zVdERjyjm6dJjZK2QTb5xF.jpg',imagePosition:'50% 45%',gameIds:['re4','re4r'],characterIds:['leon'],variants:[],attachments:[]},
+    {id:'stingray',name:'Stingray',class:'Rifle',ammo:'Rifle ammo',summary:'A semi-automatic rifle designed for precision fire at range.',image:'https://img.playstationtrophies.org/images/monthly_2023_03/guide/residentevil4_20230324112729_299f7c45-c6a6-4e40-b95e-7ebc9a06913d_l.jpg',imagePosition:'50% 45%',gameIds:['re4r'],characterIds:['leon'],variants:[],attachments:['High-Power Scope','Biosensor Scope']},
+    {id:'tmp',name:'TMP',class:'SMG',ammo:'Submachine gun ammo',summary:'A compact submachine gun that trades precision for a high rate of fire.',image:H.re4,imagePosition:'50% 43%',gameIds:['re4','re4r'],characterIds:['leon'],variants:[],attachments:['TMP Stock']},
+    {id:'rocket-launcher',name:'Rocket Launcher',class:'Launcher',ammo:'Rocket',summary:'A single-purpose heavy weapon intended for the most dangerous targets.',image:H.re4,imagePosition:'50% 43%',gameIds:['re4','re4r'],characterIds:['leon'],variants:['Infinite Rocket Launcher'],attachments:[]},
+    {id:'m92f',name:'M92F',class:'Handgun',ammo:'Handgun ammo',summary:'A dependable B.S.A.A. sidearm used during the Kijuju incident.',image:H.re5,imagePosition:'50% 42%',gameIds:['re5'],characterIds:['chris'],variants:[],attachments:[]},
+    {id:'ithaca-m37',name:'Ithaca M37',class:'Shotgun',ammo:'Shotgun shells',summary:'A pump-action shotgun suited to the dense close-quarters fighting in Kijuju.',image:H.re5,imagePosition:'50% 42%',gameIds:['re5'],characterIds:['chris'],variants:[],attachments:[]},
+    {id:'sig556',name:'SIG 556',class:'Rifle',ammo:'Rifle ammo',summary:'A select-fire rifle used by B.S.A.A. operatives during the African bioterror incident.',image:H.re5,imagePosition:'50% 42%',gameIds:['re5'],characterIds:['chris'],variants:[],attachments:[]},
+    {id:'rpg7',name:'RPG-7',class:'Launcher',ammo:'Rocket',summary:'A heavy anti-armor launcher used against extreme B.O.W. threats.',image:H.re5,imagePosition:'50% 42%',gameIds:['re5'],characterIds:['chris'],variants:[],attachments:[]},
+    {id:'wing-shooter',name:'Wing Shooter',class:'Handgun',ammo:'9mm handgun ammo',summary:'Leon’s paired sidearms during the global C-Virus crisis.',image:H.re6,imagePosition:'50% 44%',gameIds:['re6'],characterIds:['leon'],variants:[],attachments:[]},
+    {id:'assault-rifle-for-special-tactics',name:'Assault Rifle for Special Tactics',class:'Rifle',ammo:'5.56mm NATO',summary:'A tactical rifle associated with Chris Redfield’s B.S.A.A. campaign.',image:H.re6,imagePosition:'50% 44%',gameIds:['re6'],characterIds:['chris'],variants:[],attachments:[]},
+    {id:'m19',name:'M19',class:'Handgun',ammo:'Handgun ammo',summary:'A compact handgun found during Ethan Winters’ search through the Baker estate.',image:'https://gameranx.com/wp-content/uploads/2017/01/RESIDENT-EVIL-7-biohazard_20170127235906-1.jpg',imagePosition:'50% 45%',gameIds:['re7'],characterIds:['ethan'],variants:[],attachments:[]},
+    {id:'albert01r',name:'Albert-01R',class:'Handgun',ammo:'Handgun ammo',summary:'A powerful anti-B.O.W. handgun derived from equipment used late in the Baker incident.',image:H.re7,imagePosition:'50% 48%',gameIds:['re7'],characterIds:['ethan'],variants:[],attachments:[]},
+    {id:'lemi',name:'LEMI',class:'Handgun',ammo:'Handgun ammo',summary:'Ethan’s early sidearm during the Village incident.',image:H.re8,imagePosition:'50% 42%',gameIds:['re8'],characterIds:['ethan'],variants:[],attachments:['Recoil Compensator','High-Capacity Mag']},
+    {id:'m1897',name:'M1897',class:'Shotgun',ammo:'Shotgun shells',summary:'A pump-action shotgun recovered early in the Village incident.',image:'https://www.egames.news/img/2021/05/15/resident_evil_village_cxmo_conseguir_la_escopeta_m1897.png?__scale=w%3A480',imagePosition:'50% 50%',gameIds:['re8'],characterIds:['ethan'],variants:[],attachments:[]},
+    {id:'f2-rifle',name:'F2 Rifle',class:'Rifle',ammo:'Rifle ammo',summary:'A bolt-action rifle used for long-range precision in the mountain village.',image:H.re8,imagePosition:'50% 42%',gameIds:['re8'],characterIds:['ethan'],variants:[],attachments:['High Magnification Scope','High-Capacity Mag']},
+    {id:'wolfsbane',name:'M1851 Wolfsbane',class:'Magnum',ammo:'Magnum ammo',summary:'A high-caliber revolver associated with the strongest threats in the Village incident.',image:H.re8,imagePosition:'50% 42%',gameIds:['re8'],characterIds:['ethan'],variants:[],attachments:['Long Barrel']}
+  ];
+  data.games.forEach((game) => { game.weaponIds = data.weapons.filter((weapon) => weapon.gameIds.includes(game.id)).map((weapon) => weapon.id); });
 })();
