@@ -12,125 +12,23 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="noise" aria-hidden="true"></div>
-  <div class="scanline" aria-hidden="true"></div>
-
-  <nav class="nav" aria-label="Primary navigation">
-    <div class="container nav-inner">
-      <a class="brand" href="#top" aria-label="Biohazard Archive home"><span class="mark" aria-hidden="true"></span><span>Biohazard <small>Archive</small></span></a>
-      <div class="links">
-        <a href="#games">Games</a><a href="#characters">Operatives</a><a href="#bows">B.O.W.s</a><a href="#raccoon-map">Map</a><a href="#timeline">Timeline</a><a href="#media">Media</a>
-      </div>
-      <div class="nav-actions"><div class="status"><span class="dot"></span>Archive online</div><button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobilePanel">Menu</button></div>
-    </div>
-  </nav>
-  <div class="mobile-panel" id="mobilePanel">
-    <a href="#games">Games</a><a href="#characters">Operatives</a><a href="#bows">B.O.W.s</a><a href="#raccoon-map">Map</a><a href="#timeline">Timeline</a><a href="#pathogens">Pathogens</a><a href="#media">Media</a>
-  </div>
-
-  <header class="hero" id="top">
-    <div class="hero-photo" aria-hidden="true"></div>
-    <div class="hero-grid" aria-hidden="true"></div>
-    <div class="hero-vignette" aria-hidden="true"></div>
-    <div class="container hero-layout">
-      <div class="hero-copy-block">
-        <div class="classification">Umbrella incident archive // clearance red</div>
-        <h1><span class="solid">Resident</span><span class="outline">Evil</span></h1>
-        <p class="hero-copy">Trace the outbreaks, survivors, B.O.W.s, corporations, pathogens and locations that shaped survival horror. This unofficial fan archive is built as a cinematic portfolio experiment.</p>
-        <div class="hero-actions"><a class="btn primary" href="#games">Enter database</a><a class="btn" href="dossier.html?id=leon">Open Leon file</a><button class="btn ghost" id="scannerBtn">Toggle scanner</button></div>
-        <div class="hero-telemetry"><span>NODE: RC-1998</span><span>STATUS: COMPROMISED</span><span>SIGNAL: 82%</span></div>
-      </div>
-      <aside class="hero-console" aria-label="Archive summary">
-        <div class="console-head"><span>LIVE INCIDENT FEED</span><span class="blink">REC</span></div>
-        <div class="console-image"><span class="camera-label">CAM 03 // R.P.D. EXTERIOR</span></div>
-        <div class="console-grid"><div><strong>1998</strong><small>Raccoon Incident</small></div><div><strong>12</strong><small>Game Files</small></div><div><strong>09</strong><small>Personnel Files</small></div><div><strong>09</strong><small>B.O.W. Entries</small></div></div>
-      </aside>
-    </div>
-    <a class="scroll-cue" href="#games" aria-label="Scroll to the incident database"></a>
-  </header>
-
+  <div class="noise" aria-hidden="true"></div><div class="scanline" aria-hidden="true"></div>
+  <nav class="nav" aria-label="Primary navigation"><div class="container nav-inner"><a class="brand" href="#top" aria-label="Biohazard Archive home"><span class="mark" aria-hidden="true"></span><span>Biohazard <small>Archive</small></span></a><div class="links"><a href="#games">Games</a><a href="#armory">Armory</a><a href="#characters">Operatives</a><a href="#bows">B.O.W.s</a><a href="#raccoon-map">Map</a><a href="#timeline">Timeline</a><a href="#media">Media</a></div><div class="nav-actions"><div class="status"><span class="dot"></span>Archive online</div><button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobilePanel">Menu</button></div></div></nav>
+  <div class="mobile-panel" id="mobilePanel"><a href="#games">Games</a><a href="#armory">Armory</a><a href="#characters">Operatives</a><a href="#bows">B.O.W.s</a><a href="#raccoon-map">Map</a><a href="#timeline">Timeline</a><a href="#pathogens">Pathogens</a><a href="#media">Media</a></div>
+  <header class="hero" id="top"><div class="hero-photo" aria-hidden="true"></div><div class="hero-grid" aria-hidden="true"></div><div class="hero-vignette" aria-hidden="true"></div><div class="container hero-layout"><div class="hero-copy-block"><div class="classification">Umbrella incident archive // clearance red</div><h1><span class="solid">Resident</span><span class="outline">Evil</span></h1><p class="hero-copy">Trace the outbreaks, survivors, B.O.W.s, corporations, pathogens and locations that shaped survival horror. This unofficial fan archive is built as a cinematic portfolio experiment.</p><div class="hero-actions"><a class="btn primary" href="#games">Enter database</a><a class="btn" href="dossier.html?id=leon">Open Leon file</a><button class="btn ghost" id="scannerBtn">Toggle scanner</button></div><div class="hero-telemetry"><span>NODE: RC-1998</span><span>STATUS: COMPROMISED</span><span>SIGNAL: 82%</span></div></div><aside class="hero-console" aria-label="Archive summary"><div class="console-head"><span>LIVE INCIDENT FEED</span><span class="blink">REC</span></div><div class="console-image"><span class="camera-label">CAM 03 // R.P.D. EXTERIOR</span></div><div class="console-grid"><div><strong>1998</strong><small>Raccoon Incident</small></div><div><strong>12</strong><small>Game Files</small></div><div><strong>28</strong><small>Armory Files</small></div><div><strong>09</strong><small>B.O.W. Entries</small></div></div></aside></div><a class="scroll-cue" href="#games" aria-label="Scroll to the incident database"></a></header>
   <main>
-    <section id="games" class="section-shell">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Archive 01</div><h2 class="section-title">Incident<br>Database</h2></div><p class="section-copy">Filter the mainline archive by game, character, year, location, faction or pathogen. Every record reacts like a classified terminal entry rather than a standard card grid.</p></div>
-        <div class="terminal reveal"><div class="terminal-top"><span>BIOHAZARD_DATABASE://SEARCH_RECORDS</span><span id="resultCount">12 RECORDS</span></div><input class="search" id="archiveSearch" type="search" placeholder="Search Leon, Raccoon City, Las Plagas, 1998..." aria-label="Search Resident Evil archive"></div>
-        <div class="games" id="gameGrid"></div>
-      </div>
-    </section>
-
-    <section id="characters" class="section-shell dark-panel">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Archive 02</div><h2 class="section-title">Personnel<br>Dossiers</h2></div><p class="section-copy">Open dedicated files for the franchise’s survivors, operatives and antagonists. Some use Capcom-hosted community screenshots; others fall back to a stylized redacted profile treatment.</p></div>
-        <div class="character-strip" id="characterGrid"></div>
-      </div>
-    </section>
-
-    <section id="bows" class="section-shell">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Archive 03</div><h2 class="section-title">B.O.W.<br>Containment</h2></div><p class="section-copy">A threat-indexed database of Bio Organic Weapons and infected forms, from early Tyrant research to Mold-based organisms.</p></div>
-        <div class="bow-controls reveal" role="group" aria-label="Filter B.O.W. database">
-          <button class="chip active" data-bow-filter="all">All threats</button><button class="chip" data-bow-filter="Critical">Critical</button><button class="chip" data-bow-filter="Severe">Severe</button><button class="chip" data-bow-filter="High">High</button>
-        </div>
-        <div class="bow-grid" id="bowGrid"></div>
-      </div>
-    </section>
-
-    <section id="raccoon-map" class="section-shell map-section">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Archive 04</div><h2 class="section-title">Raccoon City<br>Threat Map</h2></div><p class="section-copy">Select a hotspot to inspect key outbreak zones. This is a stylized incident board, not a reproduction of an in-game map.</p></div>
-        <div class="map-layout reveal">
-          <div class="map-board" id="mapBoard" aria-label="Interactive Raccoon City incident map">
-            <div class="map-photo" aria-hidden="true"></div>
-            <div class="map-grid" aria-hidden="true"></div>
-            <div class="map-sweep" aria-hidden="true"></div>
-            <div id="mapHotspots"></div>
-            <div class="map-coordinates"><span>N 35° 12' 08&quot;</span><span>W 106° 39' 04&quot;</span></div>
-          </div>
-          <aside class="map-readout" id="mapReadout" aria-live="polite"><div class="readout-code">RC // SELECTED NODE</div><h3>Raccoon Police Department</h3><div class="risk-line"><span>RISK</span><strong>SEVERE</strong></div><p>A key refuge and battleground during the September 1998 outbreak.</p><div class="readout-bars"><span></span><span></span><span></span><span></span><span></span></div></aside>
-        </div>
-      </div>
-    </section>
-
-    <section id="timeline" class="section-shell dark-panel">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Archive 05</div><h2 class="section-title">Outbreak<br>Timeline</h2></div><p class="section-copy">Follow the escalation from Umbrella’s origins through the Raccoon disaster and later global bioterror incidents.</p></div>
-        <div class="timeline" id="timelineGrid"></div>
-      </div>
-    </section>
-
-    <section id="pathogens" class="section-shell">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Archive 06</div><h2 class="section-title">Pathogen<br>Research</h2></div><p class="section-copy">Virus, parasite and fungal records displayed as rotating laboratory specimens.</p></div>
-        <div class="pathogen-grid" id="pathogenGrid"></div>
-      </div>
-    </section>
-
-    <section id="factions" class="section-shell dark-panel">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Archive 07</div><h2 class="section-title">Organizations<br>& Factions</h2></div><p class="section-copy">Corporate research divisions, tactical units and counter-bioterror organizations shaping the larger conflict.</p></div>
-        <div class="faction-grid" id="factionGrid"></div>
-      </div>
-    </section>
-
-    <section id="locations" class="section-shell">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Archive 08</div><h2 class="section-title">Incident<br>Locations</h2></div><p class="section-copy">Locations tied to outbreaks, laboratories, disappearances and some of the series’ most recognizable survival-horror settings.</p></div>
-        <div class="location-grid" id="locationGrid"></div>
-      </div>
-    </section>
-
-    <section id="media" class="section-shell media-section">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Archive 09</div><h2 class="section-title">Surveillance<br>Gallery</h2></div><p class="section-copy">Capcom-hosted community screenshots used as visual references for this non-commercial practice site. Credits remain attached to each image.</p></div>
-        <div class="media-track" id="mediaGrid"></div>
-        <p class="media-note reveal">Resident Evil, its characters, game imagery and trademarks belong to their respective rights holders. Community screenshot credits are shown from the Capcom Snapshots posts where these images were hosted.</p>
-      </div>
-    </section>
+    <section id="games" class="section-shell"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">Archive 01</div><h2 class="section-title">Incident<br>Database</h2></div><p class="section-copy">Filter the mainline archive by game, character, year, location, faction or pathogen. Every record reacts like a classified terminal entry rather than a standard card grid.</p></div><div class="terminal reveal"><div class="terminal-top"><span>BIOHAZARD_DATABASE://SEARCH_RECORDS</span><span id="resultCount">12 RECORDS</span></div><input class="search" id="archiveSearch" type="search" placeholder="Search Leon, Raccoon City, Las Plagas, 1998..." aria-label="Search Resident Evil archive"></div><div class="games" id="gameGrid"></div></div></section>
+    <section id="armory" class="section-shell armory-section"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">Archive 02</div><h2 class="section-title">Armory<br>Archive</h2></div><p class="section-copy">Inspect recovered weapons across the incident files. Filter by class, then expand a record for known variants and attachments.</p></div><div class="weapon-controls reveal" role="group" aria-label="Filter Armory Archive"><button class="weapon-chip active" data-weapon-filter="all">All</button><button class="weapon-chip" data-weapon-filter="Handgun">Handgun</button><button class="weapon-chip" data-weapon-filter="Shotgun">Shotgun</button><button class="weapon-chip" data-weapon-filter="Magnum">Magnum</button><button class="weapon-chip" data-weapon-filter="Rifle">Rifle</button><button class="weapon-chip" data-weapon-filter="SMG">SMG</button><button class="weapon-chip" data-weapon-filter="Launcher">Launcher</button><button class="weapon-chip" data-weapon-filter="Melee">Melee</button><button class="weapon-chip" data-weapon-filter="Special">Special</button></div><div class="weapon-grid" id="weaponGrid"></div></div></section>
+    <section id="characters" class="section-shell dark-panel"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">Archive 03</div><h2 class="section-title">Personnel<br>Dossiers</h2></div><p class="section-copy">Open dedicated files for the franchise’s survivors, operatives and antagonists. Some use Capcom-hosted community screenshots; others fall back to a stylized redacted profile treatment.</p></div><div class="character-strip" id="characterGrid"></div></div></section>
+    <section id="bows" class="section-shell"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">Archive 04</div><h2 class="section-title">B.O.W.<br>Containment</h2></div><p class="section-copy">A threat-indexed database of Bio Organic Weapons and infected forms, from early Tyrant research to Mold-based organisms.</p></div><div class="bow-controls reveal" role="group" aria-label="Filter B.O.W. database"><button class="chip active" data-bow-filter="all">All threats</button><button class="chip" data-bow-filter="Critical">Critical</button><button class="chip" data-bow-filter="Severe">Severe</button><button class="chip" data-bow-filter="High">High</button></div><div class="bow-grid" id="bowGrid"></div></div></section>
+    <section id="raccoon-map" class="section-shell map-section"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">Archive 05</div><h2 class="section-title">Raccoon City<br>Threat Map</h2></div><p class="section-copy">Select a hotspot to inspect key outbreak zones. This is a stylized incident board, not a reproduction of an in-game map.</p></div><div class="map-layout reveal"><div class="map-board" id="mapBoard" aria-label="Interactive Raccoon City incident map"><div class="map-photo" aria-hidden="true"></div><div class="map-grid" aria-hidden="true"></div><div class="map-sweep" aria-hidden="true"></div><div id="mapHotspots"></div><div class="map-coordinates"><span>N 35° 12' 08&quot;</span><span>W 106° 39' 04&quot;</span></div></div><aside class="map-readout" id="mapReadout" aria-live="polite"><div class="readout-code">RC // SELECTED NODE</div><h3>Raccoon Police Department</h3><div class="risk-line"><span>RISK</span><strong>SEVERE</strong></div><p>A key refuge and battleground during the September 1998 outbreak.</p><div class="readout-bars"><span></span><span></span><span></span><span></span><span></span></div></aside></div></div></section>
+    <section id="timeline" class="section-shell dark-panel"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">Archive 06</div><h2 class="section-title">Outbreak<br>Timeline</h2></div><p class="section-copy">Follow the escalation from Umbrella’s origins through the Raccoon disaster and later global bioterror incidents.</p></div><div class="timeline" id="timelineGrid"></div></div></section>
+    <section id="pathogens" class="section-shell"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">Archive 07</div><h2 class="section-title">Pathogen<br>Research</h2></div><p class="section-copy">Virus, parasite and fungal records displayed as rotating laboratory specimens.</p></div><div class="pathogen-grid" id="pathogenGrid"></div></div></section>
+    <section id="factions" class="section-shell dark-panel"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">Archive 08</div><h2 class="section-title">Organizations<br>& Factions</h2></div><p class="section-copy">Corporate research divisions, tactical units and counter-bioterror organizations shaping the larger conflict.</p></div><div class="faction-grid" id="factionGrid"></div></div></section>
+    <section id="locations" class="section-shell"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">Archive 09</div><h2 class="section-title">Incident<br>Locations</h2></div><p class="section-copy">Locations tied to outbreaks, laboratories, disappearances and some of the series’ most recognizable survival-horror settings.</p></div><div class="location-grid" id="locationGrid"></div></div></section>
+    <section id="media" class="section-shell media-section"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">Archive 10</div><h2 class="section-title">Surveillance<br>Gallery</h2></div><p class="section-copy">Capcom-hosted community screenshots used as visual references for this non-commercial practice site. Credits remain attached to each image.</p></div><div class="media-track" id="mediaGrid"></div><p class="media-note reveal">Resident Evil, its characters, game imagery and trademarks belong to their respective rights holders. Community screenshot credits are shown from the Capcom Snapshots posts where these images were hosted.</p></div></section>
   </main>
-
   <footer><div class="container footer-inner"><div class="warning">Unofficial fan project / web-design practice archive. Not affiliated with or endorsed by Capcom. Resident Evil and related properties belong to their respective rights holders.</div><div class="footer-code">BIOHAZARD ARCHIVE // ACCESS TERMINATED</div></div></footer>
-
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="data.js"></script><script src="app.js"></script>
 </body>
 </html>
