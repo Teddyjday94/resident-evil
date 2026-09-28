@@ -10,10 +10,10 @@ const read = (name) => {
 const characters = ['Jill Valentine','Chris Redfield','Ada Wong','Albert Wesker','Ethan Winters'];
 const weapons = ['Samurai Edge','Shotgun','Grenade Launcher','Magnum Revolver','Bow Gun','Combat Knife','Chemical Flamethrower','TMP','Rocket Launcher','M92F','Ithaca M37','SIG 556','RPG-7','Wing Shooter','Assault Rifle for Special Tactics','Albert-01R','LEMI','F2 Rifle','M1851 Wolfsbane'];
 
-test('media override stylesheet is loaded last and uses the Umbrella emblem', () => {
+test('media override stylesheet loads before the recovery layer and uses the Umbrella emblem', () => {
   const entry = read('styles.css');
   const media = read('media-overrides.css');
-  assert.match(entry, /@import url\(['"]media-overrides\.css['"]\);\s*$/, 'media overrides must load last');
+  assert.match(entry, /@import url\(['"]media-overrides\.css['"]\);[\s\S]*@import url\(['"]media-recovery\.css['"]\);\s*$/, 'media overrides should load before the final recovery layer');
   assert.match(media, /Umbrella_Corporation_logo|UmbrellaCorporation/i, 'nav mark should use an Umbrella Corporation emblem asset');
   assert.match(media, /\.mark\s*\{/, 'Umbrella mark override is missing');
 });
