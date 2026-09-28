@@ -39,6 +39,40 @@
     gameGrid.appendChild(el);
   });
 
+  const labelsFor = (records, ids) => (ids || []).map((id) => {
+    const record = records.find((item) => item.id === id);
+    return record?.name || record?.title;
+  }).filter(Boolean);
+  const weaponGrid = q('#weaponGrid');
+  const renderWeapons = (filter = 'all') => {
+    weaponGrid.innerHTML = '';
+    data.weapons.filter((weapon) => filter === 'all' || weapon.class === filter).forEach((weapon) => {
+      const el = document.createElement('article');
+      el.className = 'weapon-card reveal';
+      const detailId = `weapon-details-${weapon.id}`;
+      const games = labelsFor(data.games, weapon.gameIds);
+      const characters = labelsFor(data.characters, weapon.characterIds);
+      el.innerHTML = `<div class="weapon-media"><img src="${escapeText(weapon.image)}" alt="${escapeText(weapon.name)} weapon reference" style="object-position:${escapeText(weapon.imagePosition || '50% 50%')}" loading="lazy"></div><div class="weapon-copy"><div class="weapon-code"><span>${escapeText(weapon.class)}</span><span>${escapeText(weapon.ammo)}</span></div><h3>${escapeText(weapon.name)}</h3><p>${escapeText(weapon.summary)}</p><div class="weapon-related">${escapeText(games.join(' / '))}${characters.length ? `<br>${escapeText(characters.join(' / '))}` : ''}</div><button class="weapon-toggle" type="button" aria-expanded="false" aria-controls="${detailId}">Inspect record</button><div class="weapon-details" id="${detailId}" hidden><dl><div><dt>Variants</dt><dd>${escapeText((weapon.variants || []).join(', ') || 'None recorded')}</dd></div><div><dt>Attachments</dt><dd>${escapeText((weapon.attachments || []).join(', ') || 'None recorded')}</dd></div>${weapon.notes?.length ? `<div><dt>Notes</dt><dd>${escapeText(weapon.notes.join(' · '))}</dd></div>` : ''}</dl></div></div>`;
+      const img = q('img', el); if (img) fallbackImage(img, 'WEAPON MEDIA UNAVAILABLE');
+      const toggle = q('.weapon-toggle', el);
+      const details = q('.weapon-details', el);
+      toggle.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        details.hidden = open;
+        toggle.textContent = open ? 'Inspect record' : 'Close record';
+      });
+      weaponGrid.appendChild(el);
+    });
+    observeReveals();
+  };
+  renderWeapons();
+  qa('[data-weapon-filter]').forEach((btn) => btn.addEventListener('click', () => {
+    qa('[data-weapon-filter]').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderWeapons(btn.dataset.weaponFilter);
+  }));
+
   const characterGrid = q('#characterGrid');
   data.characters.forEach((character) => {
     const el = document.createElement('article');
