@@ -16,7 +16,9 @@ test('organization cards receive emblem metadata for all five factions', () => {
     assert.match(js, new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `missing faction metadata for ${name}`);
   }
   assert.match(js, /faction-emblem/);
+  assert.match(js, /faction-logo/);
   assert.match(js, /faction-meta/);
+  assert.match(js, /assets\/organizations\/\$\{meta\.slug\}\.svg/);
 });
 
 test('pathogen cards receive image-rich research metadata for all six specimens', () => {
@@ -26,15 +28,17 @@ test('pathogen cards receive image-rich research metadata for all six specimens'
   }
   for (const field of ['origin','transmission','effect','status']) assert.match(js, new RegExp(field), `missing ${field} research field`);
   assert.match(js, /pathogen-media/);
+  assert.match(js, /pathogen-media-image/);
   assert.match(js, /pathogen-status/);
+  assert.match(js, /assets\/pathogens\/\$\{meta\.slug\}\.svg/);
 });
 
-test('research stylesheet defines real-image panels, local fallbacks, and mobile-safe layout', () => {
+test('research stylesheet defines explicit media panels and mobile-safe layout', () => {
   const css = read('research-redesign.css');
   assert.match(css, /\.faction-emblem/);
+  assert.match(css, /\.faction-logo\s*\{/);
   assert.match(css, /\.pathogen-media/);
-  assert.match(css, /assets\/organizations\//);
-  assert.match(css, /assets\/pathogens\//);
+  assert.match(css, /\.pathogen-media-image\s*\{/);
   assert.match(css, /@media\s*\(max-width:\s*680px\)/);
   assert.match(css, /prefers-reduced-motion/);
 });
