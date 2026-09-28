@@ -1,0 +1,23 @@
+/* Repo-hosted archive illustrations for Organizations and Pathogens. */
+.faction-card,.pathogen-card{position:relative;overflow:hidden}
+.faction-card::before,.pathogen-card::before{content:"";position:absolute;inset:0 0 auto 0;height:58%;background-position:center;background-repeat:no-repeat;background-size:cover;opacity:.82;filter:saturate(.72) contrast(1.08) brightness(.8);pointer-events:none;transition:transform .45s ease,filter .45s ease}
+.faction-card::after,.pathogen-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.03) 0%,rgba(8,8,8,.16) 32%,#090909 63%,#090909 100%)}
+.faction-card>*{position:relative;z-index:2}.pathogen-card>*{position:relative;z-index:2}
+.faction-card .stamp{margin-top:8px;background:rgba(5,5,5,.55);backdrop-filter:blur(3px)}
+.faction-card:first-child .stamp{margin-bottom:230px}.faction-card:not(:first-child) .stamp{margin-bottom:72px}
+.faction-card:nth-child(1)::before{background-image:url('assets/organizations/umbrella.svg')}
+.faction-card:nth-child(2)::before{background-image:url('assets/organizations/stars.svg')}
+.faction-card:nth-child(3)::before{background-image:url('assets/organizations/bsaa.svg')}
+.faction-card:nth-child(4)::before{background-image:url('assets/organizations/rpd.svg')}
+.faction-card:nth-child(5)::before{background-image:url('assets/organizations/terrasave.svg')}
+.pathogen-card::before{height:66%;opacity:.74}
+.pathogen-card:nth-child(1)::before{background-image:url('assets/pathogens/t-virus.svg')}
+.pathogen-card:nth-child(2)::before{background-image:url('assets/pathogens/g-virus.svg')}
+.pathogen-card:nth-child(3)::before{background-image:url('assets/pathogens/las-plagas.svg')}
+.pathogen-card:nth-child(4)::before{background-image:url('assets/pathogens/uroboros.svg')}
+.pathogen-card:nth-child(5)::before{background-image:url('assets/pathogens/c-virus.svg')}
+.pathogen-card:nth-child(6)::before{background-image:url('assets/pathogens/mutamycete.svg')}
+.pathogen-card .specimen-orb{z-index:3;opacity:.55}.pathogen-card h3{margin-top:150px}
+.faction-card:hover::before,.pathogen-card:hover::before{transform:scale(1.025);filter:saturate(.9) contrast(1.08) brightness(.9)}
+@media(max-width:680px){.faction-card::before{height:52%}.pathogen-card::before{height:60%}}
+@media(prefers-reduced-motion:reduce){.faction-card::before,.pathogen-card::before{transition:none}.faction-card:hover::before,.pathogen-card:hover::before{transform:none}}
