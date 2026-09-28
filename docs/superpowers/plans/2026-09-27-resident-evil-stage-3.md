@@ -46,9 +46,9 @@
 ### Modified files
 
 - `data.js` — add stable IDs/relationship arrays and `weapons` collection; enrich game records with page metadata.
-- `index.html` — add Armory section and load its styling through the existing stylesheet entry point.
+- `index.html` — add Armory section.
 - `app.js` — make game cards navigable; render/filter/expand homepage weapons without disturbing existing sections.
-- `styles.css` — import `armory.css` and `game.css` only if shared import behavior is safe for both pages; otherwise `game.html` loads `game.css` directly and `styles.css` imports only `armory.css`.
+- `styles.css` — import `armory.css`; `game.html` loads existing `styles.css` plus `game.css` directly.
 - `styles-adaptive.css` — only if existing global breakpoints need small shared adjustments.
 - `README.md` — document Stage 3 routes, data relationships, and verification commands.
 
@@ -194,7 +194,7 @@ git commit -m "feat: add shared weapons archive data"
 
 **Interfaces:**
 - Consumes: `window.RE_ARCHIVE.games` and shared collections from Tasks 1–2.
-- Produces: `game.html?id=<game-id>`; `game.js` helpers `getRequestedGameId(search)`, `resolveGame(data, id)`, and page rendering into `#gameRoot`; controlled `.game-not-found` state.
+- Produces: `game.html?id=<game-id>`; browser/test utility interface `window.RE_GAME_UTILS = { getRequestedGameId, resolveGame }`; page rendering into `#gameRoot`; controlled `.game-not-found` state.
 
 - [ ] **Step 1: Write failing shell/query tests**
 
@@ -205,10 +205,11 @@ assert.match(html, /id=["']gameRoot["']/);
 assert.match(html, /data\.js/);
 assert.match(html, /game\.js/);
 assert.match(js, /URLSearchParams/);
+assert.match(js, /RE_GAME_UTILS/);
 assert.match(js, /game-not-found/);
 ```
 
-Add a testable resolution helper expectation: an existing ID resolves, `null`/empty ID does not silently resolve, and an unknown ID resolves to no record.
+Evaluate `game.js` in a VM sandbox without a DOM and assert through `window.RE_GAME_UTILS` that an existing ID resolves, `null`/empty ID resolves to no record, and an unknown ID resolves to no record.
 
 - [ ] **Step 2: Run game-page tests to verify RED**
 
@@ -223,19 +224,20 @@ Include:
 - shared archive branding and unofficial disclaimer
 - `#gameRoot`
 - static return-to-archive link available even if rendering fails
-- stylesheet links for shared styles plus `game.css`
+- stylesheet links for existing `styles.css` plus `game.css`
 - scripts in safe order: `data.js` then `game.js`
 
 - [ ] **Step 4: Implement deterministic query resolution in `game.js`**
 
-Implement:
+Implement and expose before DOM bootstrap:
 
 ```js
 getRequestedGameId(search) -> string | null
 resolveGame(data, id) -> game | null
+window.RE_GAME_UTILS = { getRequestedGameId, resolveGame }
 ```
 
-Missing or unknown IDs both render `.game-not-found` with a return link. Do not default to the first game.
+Guard the DOM bootstrap so VM tests without `document` can load the utilities. Missing or unknown IDs both render `.game-not-found` with a return link in the browser. Do not default to the first game.
 
 - [ ] **Step 5: Add base game-page CSS**
 
@@ -271,11 +273,11 @@ git commit -m "feat: add reusable game archive page shell"
 
 **Interfaces:**
 - Consumes: game relationship arrays and shared archive collections.
-- Produces: rendered sections with IDs `brief`, `personnel`, `armory`, `threats`, `pathogens`, `locations`, `files`; relation helper `resolveMany(records, ids)` that ignores unknown IDs while preserving valid results.
+- Produces: rendered sections with IDs `brief`, `personnel`, `armory`, `threats`, `pathogens`, `locations`, `files`; extends `window.RE_GAME_UTILS` with `resolveMany(records, ids)`, which ignores unknown IDs while preserving valid results.
 
 - [ ] **Step 1: Write failing relation-rendering tests**
 
-Add tests that pin:
+Through `window.RE_GAME_UTILS`, assert:
 
 ```js
 resolveMany([{id:'a'},{id:'b'}], ['a','missing','b'])
@@ -283,7 +285,7 @@ resolveMany([{id:'a'},{id:'b'}], ['a','missing','b'])
 
 returns only `a` and `b` in requested order without throwing.
 
-Add static assertions that `game.js` renders/targets the required section IDs and character dossier URLs.
+Add static assertions that `game.js` renders/targets the required section IDs and character dossier URLs. Add a fallback contract assertion that `game.js` binds an image `error` handler and `game.css` defines a fixed-dimension media-unavailable state for game-page media wrappers.
 
 - [ ] **Step 2: Run tests to verify RED**
 
@@ -305,7 +307,7 @@ Render:
 - Pathogens from `pathogenIds[]`
 - Locations from `locationIds[]`
 - Files/timeline from `incidentFacts[]`
-- Related Archive links where explicit related data exists; otherwise omit cleanly
+- Related Archive links only when explicit related records are available; otherwise omit the block cleanly
 
 If a relation is malformed, omit that specific missing card and continue rendering the page.
 
@@ -367,7 +369,7 @@ id="weaponGrid"
 data-weapon-filter="all"
 ```
 
-Assert `app.js` contains/render behavior for `renderWeapons`, uses the shared `data.weapons`, and binds card image failures through the existing fallback mechanism.
+Assert `app.js` contains/render behavior for `renderWeapons`, uses the shared `data.weapons`, and binds card image failures through the existing fallback mechanism. Assert `armory.css` contains a fixed-height/fixed-min-height fallback treatment for failed weapon media so the card does not collapse.
 
 - [ ] **Step 2: Run Armory tests to verify RED**
 
@@ -377,7 +379,7 @@ Expected: FAIL because the Armory section does not exist.
 
 - [ ] **Step 3: Add the Armory section to `index.html`**
 
-Place it after the Incident Database and before Personnel Dossiers so game records naturally flow into equipment records. Include buttons for:
+Place it after the Incident Database and before Personnel Dossiers so game records naturally flow into equipment records. Use an `Archive 01-B` eyebrow to avoid renumbering the existing archive sections. Include buttons for:
 
 - All
 - Handgun
@@ -404,9 +406,9 @@ Each card must expose:
 - an accessible expand/collapse control with `aria-expanded`
 - optional variants/attachments/notes in the expanded panel
 
-Filtering must rebuild only `#weaponGrid` and must not affect homepage archive search behavior.
+Do not give weapon cards the existing `.searchable` class in Stage 3; homepage archive search remains game/archive focused and Armory filtering stays independent. Filtering must rebuild only `#weaponGrid` and must not affect homepage archive search behavior.
 
-- [ ] **Step 5: Add `armory.css` and import it**
+- [ ] **Step 5: Add `armory.css` and import it from `styles.css`**
 
 Desktop:
 
@@ -513,8 +515,9 @@ git commit -m "feat: link game cards to archive pages"
 Pin:
 
 - game-page mini-nav has real section hrefs
-- armory buttons are buttons, not hover-only divs
+- armory filter/expand controls are buttons, not hover-only divs
 - page-specific styles contain a `prefers-reduced-motion` rule
+- filter and mini-nav containers use local horizontal scrolling/containment rather than causing page-level overflow
 - homepage runtime still declares/initializes reveal observer safely before render paths can invoke it
 
 - [ ] **Step 2: Run targeted tests to verify RED where applicable**
