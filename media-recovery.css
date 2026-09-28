@@ -1,0 +1,71 @@
+/* Targeted recovery for cards whose original hotlinked <img> can fail.
+   These selectors key off stable record links/IDs, so they keep working even after app.js removes a failed img. */
+
+#gameGrid .game-card:has(a[href="game.html?id=re1"]) .game-media::before,
+#gameGrid .game-card:has(a[href="game.html?id=re2"]) .game-media::before,
+#gameGrid .game-card:has(a[href="game.html?id=re3"]) .game-media::before,
+#weaponGrid .weapon-card:has(#weapon-details-samurai-edge) .weapon-media::before,
+#weaponGrid .weapon-card:has(#weapon-details-classic-shotgun) .weapon-media::before,
+#weaponGrid .weapon-card:has(#weapon-details-grenade-launcher) .weapon-media::before,
+#weaponGrid .weapon-card:has(#weapon-details-magnum-revolver) .weapon-media::before,
+#weaponGrid .weapon-card:has(#weapon-details-m1897) .weapon-media::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:5;
+  pointer-events:none;
+  background-color:#080808;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+#gameGrid .game-card:has(a[href="game.html?id=re1"]) .game-media::before{
+  background-image:url('https://cdn.wikimg.net/en/strategywiki/images/3/32/REOriginalBoxArt.jpg'),url('https://cdn.akamai.steamstatic.com/steam/apps/4249100/header.jpg');
+  background-size:cover,cover;
+  background-position:center 34%,center;
+}
+#gameGrid .game-card:has(a[href="game.html?id=re2"]) .game-media::before{
+  background-image:url('https://www.covercentury.com/covers/psx/r/Resident-Evil-2-NTSC-PSX-FRONT.jpg'),url('https://cdn.akamai.steamstatic.com/steam/apps/4249110/header.jpg');
+  background-size:cover,cover;
+  background-position:center 43%,center;
+}
+#gameGrid .game-card:has(a[href="game.html?id=re3"]) .game-media::before{
+  background-image:url('https://classicgamestore.ch/media/1c/c6/ed/1760805223/4758980-resident-evil-3-nemesis-playstation-front-cover.jpg?ts=1766778417'),url('https://cdn.akamai.steamstatic.com/steam/apps/4249120/header.jpg');
+  background-size:cover,cover;
+  background-position:center 35%,center;
+}
+
+#weaponGrid .weapon-card:has(#weapon-details-samurai-edge) .weapon-media::before{
+  background-image:url('https://images.gamewatcherstatic.com/screenshot/image/3/9c/299543/23-1550109406-2071466694.jpeg'),url('https://articles-img.sftcdn.net/auto-mapping-folder/sites/3/2019/01/jill-edge-1024x576.jpg');
+  background-size:cover,cover;
+}
+#weaponGrid .weapon-card:has(#weapon-details-classic-shotgun) .weapon-media::before{
+  background-image:url('https://www.crunkgames.com/therest/fashion/img/jill02.jpg'),url('https://www.imfdb.org/images/thumb/b/b8/RE1_1996_870-6.jpg/600px-RE1_1996_870-6.jpg');
+  background-size:cover,contain;
+  background-position:center 42%,center;
+}
+#weaponGrid .weapon-card:has(#weapon-details-grenade-launcher) .weapon-media::before{
+  background-image:url('https://static.actugaming.net/media/2020/03/resident-evil-3-lance-grenades-889x500.jpg'),url('https://cdn.hk01.com/di/media/images/20200402/322518771027808256.jpeg/ImPtXty6bXYiUOK6cmlkiDYriwbfud7DYO_qRWDv6kU');
+  background-size:cover,cover;
+}
+#weaponGrid .weapon-card:has(#weapon-details-magnum-revolver) .weapon-media::before{
+  background-image:url('https://models.spriters-resource.com/media/preview_icons/309/311963.png?updated=1755503222'),url('https://cdn.akamai.steamstatic.com/steam/apps/4249100/header.jpg');
+  background-size:contain,cover;
+}
+#weaponGrid .weapon-card:has(#weapon-details-m1897) .weapon-media::before{
+  background-image:url('https://www.cultture.com/pics/2021/07/resident-evil-8-todas-las-armas-que-ethan-encontrara-en-su-primera-partida-clasificadas-3.jpg'),url('https://www.egames.news/img/2021/05/15/resident_evil_village_cxmo_conseguir_la_escopeta_m1897.png?__scale=w%3A480');
+  background-size:cover,contain;
+}
+
+/* Cover the text fallback while recovery media is present. */
+#gameGrid .game-card:has(a[href="game.html?id=re1"]) .game-media.img-fallback,
+#gameGrid .game-card:has(a[href="game.html?id=re2"]) .game-media.img-fallback,
+#gameGrid .game-card:has(a[href="game.html?id=re3"]) .game-media.img-fallback,
+#weaponGrid .weapon-card:has(#weapon-details-samurai-edge) .weapon-media.img-fallback,
+#weaponGrid .weapon-card:has(#weapon-details-classic-shotgun) .weapon-media.img-fallback,
+#weaponGrid .weapon-card:has(#weapon-details-grenade-launcher) .weapon-media.img-fallback,
+#weaponGrid .weapon-card:has(#weapon-details-magnum-revolver) .weapon-media.img-fallback,
+#weaponGrid .weapon-card:has(#weapon-details-m1897) .weapon-media.img-fallback{
+  color:transparent!important;
+  text-shadow:none!important;
+}
