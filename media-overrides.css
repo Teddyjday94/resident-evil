@@ -1,0 +1,126 @@
+/* Resident Evil media completion pass: character portraits, weapon references, and Umbrella archive mark. */
+
+.mark{
+  width:31px!important;
+  height:31px!important;
+  transform:none!important;
+  border:0!important;
+  border-radius:50%!important;
+  background-image:url('https://upload.wikimedia.org/wikipedia/commons/a/a6/Umbrella_Corporation_logo_%28Simplified%29.svg')!important;
+  background-position:center!important;
+  background-size:contain!important;
+  background-repeat:no-repeat!important;
+  box-shadow:0 0 22px rgba(210,11,23,.35)!important;
+}
+
+/* Character-specific replacements. The original img remains beneath these layers as a network fallback. */
+:where(.character-photo,.dossier-visual,.record-media):has(> img[alt="Jill Valentine reference image"]){--media-replacement:url('https://images.steamusercontent.com/ugc/1819992864655173523/3DF33B08BBE434532621079407A746EF5A78FE65/?ima=fit&imcolor=%23000000&imh=512&impolicy=Letterbox&imw=512&letterbox=true');--media-position:50% 18%}
+:where(.character-photo,.dossier-visual,.record-media):has(> img[alt="Chris Redfield reference image"]){--media-replacement:url('https://images.wallpapersden.com/image/download/chris-redfield-hd-resident-evil-village_bGxmZWqUmZqaraWkpJRnaGprrWdnaGk.jpg');--media-position:50% 18%}
+:where(.character-photo,.dossier-visual,.record-media):has(> img[alt="Ada Wong reference image"]){--media-replacement:url('https://images.squarespace-cdn.com/content/v1/58ad62e48419c2dd18e24323/b197c1ca-8887-4b86-8e51-768330d13999/ada%2Bwong.png');--media-position:50% 16%}
+:where(.character-photo,.dossier-visual,.record-media):has(> img[alt="Albert Wesker reference image"]){--media-replacement:url('https://www.gamegrin.com/assets/character/albert-wesker/albert-wesker-image.png');--media-position:50% 14%}
+:where(.character-photo,.dossier-visual,.record-media):has(> img[alt="Ethan Winters reference image"]){--media-replacement:url('https://cdn11.bigcommerce.com/s-xku293zif5/images/stencil/558x558/products/4058/7895/resident-evil-village-ethan-winters-jacket__31285.1631704598.jpg?c=2');--media-position:50% 15%}
+
+:where(.character-photo,.dossier-visual,.record-media):is(
+  :has(> img[alt="Jill Valentine reference image"]),
+  :has(> img[alt="Chris Redfield reference image"]),
+  :has(> img[alt="Ada Wong reference image"]),
+  :has(> img[alt="Albert Wesker reference image"]),
+  :has(> img[alt="Ethan Winters reference image"])
+)::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background-color:rgba(4,4,4,.12);
+  background-image:var(--media-replacement)!important;
+  background-position:var(--media-position,50% 30%)!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+}
+
+/* Weapon-specific replacements. Full silhouettes use contain to avoid cropping barrels, stocks, and blades. */
+:where(.weapon-media,.record-media):has(> img[alt="Samurai Edge weapon reference"]){--media-replacement:url('https://articles-img.sftcdn.net/auto-mapping-folder/sites/3/2019/01/jill-edge-1024x576.jpg')}
+:where(.weapon-media,.record-media):has(> img[alt="Shotgun weapon reference"]){--media-replacement:url('https://www.imfdb.org/images/thumb/b/b8/RE1_1996_870-6.jpg/600px-RE1_1996_870-6.jpg')}
+:where(.weapon-media,.record-media):has(> img[alt="Grenade Launcher weapon reference"]){--media-replacement:url('https://cdn.hk01.com/di/media/images/20200402/322518771027808256.jpeg/ImPtXty6bXYiUOK6cmlkiDYriwbfud7DYO_qRWDv6kU')}
+:where(.weapon-media,.record-media):has(> img[alt="Magnum Revolver weapon reference"]){--media-replacement:url('https://models.spriters-resource.com/media/preview_icons/309/311963.png?updated=1755503222')}
+:where(.weapon-media,.record-media):has(> img[alt="Bow Gun weapon reference"]){--media-replacement:url('https://www.evilresource.com/images/data/full/recv/cross-bow-handgun.png')}
+:where(.weapon-media,.record-media):has(> img[alt="Combat Knife weapon reference"]){--media-replacement:url('https://images.steamusercontent.com/ugc/1875201186859157496/96DF249865FE8A46C39AF06F608C098D750AA184/')}
+:where(.weapon-media,.record-media):has(> img[alt="Chemical Flamethrower weapon reference"]){--media-replacement:url('https://cdn.mos.cms.futurecdn.net/mLFKXcauhEGkx4qnawFM6f-970-80.jpg')}
+:where(.weapon-media,.record-media):has(> img[alt="TMP weapon reference"]){--media-replacement:url('https://img.playstationtrophies.org/images/monthly_2023_03/guide/residentevil4_20230324112811_97b3b26b-5b0f-44eb-ac86-75c7fcc5755c_l.jpg')}
+:where(.weapon-media,.record-media):has(> img[alt="Rocket Launcher weapon reference"]){--media-replacement:url('https://images.akamai.steamusercontent.com/ugc/3332967914514598697/A45C983171ED2CAF65A326646E52FA42A3AE232A/')}
+:where(.weapon-media,.record-media):has(> img[alt="M92F weapon reference"]){--media-replacement:url('https://images.steamusercontent.com/ugc/478895272562550464/BF28DD6060C0EE215DB93529FB2E202333704157/')}
+:where(.weapon-media,.record-media):has(> img[alt="Ithaca M37 weapon reference"]){--media-replacement:url('https://www.evilresource.com/images/data/full/re5/ithaca-m37.png')}
+:where(.weapon-media,.record-media):has(> img[alt="SIG 556 weapon reference"]){--media-replacement:url('https://images.steamusercontent.com/ugc/478895272562556229/25E46E18348151878C7B1C05FA4F934F905241BF/')}
+:where(.weapon-media,.record-media):has(> img[alt="RPG-7 weapon reference"]){--media-replacement:url('https://www.evilresource.com/images/data/full/re5/rocket-launcher.png')}
+:where(.weapon-media,.record-media):has(> img[alt="Wing Shooter weapon reference"]){--media-replacement:url('https://www.imfdb.org/images/c/c9/Wingshooter.jpg')}
+:where(.weapon-media,.record-media):has(> img[alt="Assault Rifle for Special Tactics weapon reference"]){--media-replacement:url('https://www.evilresource.com/images/data/full/re6/assault-rifle-for-special-tactics.png')}
+:where(.weapon-media,.record-media):has(> img[alt="Albert-01R weapon reference"]){--media-replacement:url('https://img.gamewith.jp/img/9182b8863862056c3379e88a31acb41e.jpg')}
+:where(.weapon-media,.record-media):has(> img[alt="LEMI weapon reference"]){--media-replacement:url('https://xin.18183.com/uploads/allimg/231107/85-23110G62036.jpg')}
+:where(.weapon-media,.record-media):has(> img[alt="F2 Rifle weapon reference"]){--media-replacement:url('https://www.egames.news/img/2021/05/17/resident_evil_village_cxmo_conseguir_el_rile_f2_fxcilmente.jpg?__scale=w%3A1200%2Ch%3A1200%2Ct%3A2')}
+:where(.weapon-media,.record-media):has(> img[alt="M1851 Wolfsbane weapon reference"]){--media-replacement:url('https://cdn.mos.cms.futurecdn.net/d2PPCwHA97qUwMZnLL4nfa.jpg')}
+
+:where(.weapon-media,.record-media):is(
+  :has(> img[alt="Samurai Edge weapon reference"]),
+  :has(> img[alt="Shotgun weapon reference"]),
+  :has(> img[alt="Grenade Launcher weapon reference"]),
+  :has(> img[alt="Magnum Revolver weapon reference"]),
+  :has(> img[alt="Bow Gun weapon reference"]),
+  :has(> img[alt="Combat Knife weapon reference"]),
+  :has(> img[alt="Chemical Flamethrower weapon reference"]),
+  :has(> img[alt="TMP weapon reference"]),
+  :has(> img[alt="Rocket Launcher weapon reference"]),
+  :has(> img[alt="M92F weapon reference"]),
+  :has(> img[alt="Ithaca M37 weapon reference"]),
+  :has(> img[alt="SIG 556 weapon reference"]),
+  :has(> img[alt="RPG-7 weapon reference"]),
+  :has(> img[alt="Wing Shooter weapon reference"]),
+  :has(> img[alt="Assault Rifle for Special Tactics weapon reference"]),
+  :has(> img[alt="Albert-01R weapon reference"]),
+  :has(> img[alt="LEMI weapon reference"]),
+  :has(> img[alt="F2 Rifle weapon reference"]),
+  :has(> img[alt="M1851 Wolfsbane weapon reference"])
+){
+  position:relative!important;
+  overflow:hidden!important;
+}
+
+:where(.weapon-media,.record-media):is(
+  :has(> img[alt="Samurai Edge weapon reference"]),
+  :has(> img[alt="Shotgun weapon reference"]),
+  :has(> img[alt="Grenade Launcher weapon reference"]),
+  :has(> img[alt="Magnum Revolver weapon reference"]),
+  :has(> img[alt="Bow Gun weapon reference"]),
+  :has(> img[alt="Combat Knife weapon reference"]),
+  :has(> img[alt="Chemical Flamethrower weapon reference"]),
+  :has(> img[alt="TMP weapon reference"]),
+  :has(> img[alt="Rocket Launcher weapon reference"]),
+  :has(> img[alt="M92F weapon reference"]),
+  :has(> img[alt="Ithaca M37 weapon reference"]),
+  :has(> img[alt="SIG 556 weapon reference"]),
+  :has(> img[alt="RPG-7 weapon reference"]),
+  :has(> img[alt="Wing Shooter weapon reference"]),
+  :has(> img[alt="Assault Rifle for Special Tactics weapon reference"]),
+  :has(> img[alt="Albert-01R weapon reference"]),
+  :has(> img[alt="LEMI weapon reference"]),
+  :has(> img[alt="F2 Rifle weapon reference"]),
+  :has(> img[alt="M1851 Wolfsbane weapon reference"])
+)::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background-color:rgba(7,7,7,.94);
+  background-image:var(--media-replacement)!important;
+  background-position:center!important;
+  background-size:contain!important;
+  background-repeat:no-repeat!important;
+}
+
+/* Keep text/controls above replacement media without changing existing card geometry. */
+.weapon-copy,.record-copy{position:relative;z-index:2}
+
+@media(max-width:680px){
+  .mark{width:29px!important;height:29px!important}
+}
