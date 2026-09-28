@@ -7,9 +7,9 @@ import vm from 'node:vm';
 const root = path.resolve('.');
 const read = (name) => fs.readFileSync(path.join(root, name), 'utf8');
 
-test('homepage exposes the second-pass archive sections and assets', () => {
+test('homepage exposes the expanded archive sections and assets', () => {
   const html = read('index.html');
-  for (const id of ['games','characters','bows','raccoon-map','timeline','pathogens','factions','locations','media']) {
+  for (const id of ['games','armory','characters','bows','raccoon-map','timeline','pathogens','factions','locations','media']) {
     assert.match(html, new RegExp(`id=["']${id}["']`), `missing #${id}`);
   }
   assert.match(html, /styles\.css/);
@@ -18,7 +18,7 @@ test('homepage exposes the second-pass archive sections and assets', () => {
   assert.match(html, /dossier\.html\?id=/);
 });
 
-test('shared archive data has meaningful game, character, BOW and map coverage', () => {
+test('shared archive data has meaningful game, weapon, character, BOW and map coverage', () => {
   const code = read('data.js');
   const sandbox = { window: {} };
   vm.createContext(sandbox);
@@ -26,6 +26,7 @@ test('shared archive data has meaningful game, character, BOW and map coverage',
   const data = sandbox.window.RE_ARCHIVE;
   assert.ok(data, 'window.RE_ARCHIVE must exist');
   assert.ok(data.games.length >= 10, 'expected 10+ games');
+  assert.ok(data.weapons.length >= 16, 'expected meaningful armory coverage');
   assert.ok(data.characters.length >= 9, 'expected 9+ characters');
   assert.ok(data.bows.length >= 8, 'expected 8+ B.O.W.s');
   assert.ok(data.mapPoints.length >= 6, 'expected 6+ map points');
@@ -46,10 +47,12 @@ test('character dossier page is data-driven and shareable', () => {
   assert.match(js, /location\.search/);
 });
 
-test('homepage interactions include filtering, map selection, image fallback and reduced-motion support', () => {
+test('homepage interactions include game navigation, filtering, map selection, image fallback and reduced-motion support', () => {
   const js = read('app.js');
-  const css = [read('styles.css'), read('styles-base.css'), read('styles-modules.css'), read('styles-adaptive.css')].join('\n');
+  const css = [read('styles.css'), read('styles-base.css'), read('styles-modules.css'), read('styles-adaptive.css'), read('armory.css')].join('\n');
+  assert.match(js, /game\.html\?id=\$\{encodeURIComponent\(game\.id\)\}/);
   assert.match(js, /archiveSearch/);
+  assert.match(js, /renderWeapons/);
   assert.match(js, /mapPoints/);
   assert.match(js, /addEventListener\(['"]error['"]/);
   assert.match(js, /matchMedia\(['"]\(prefers-reduced-motion: reduce\)['"]\)/);
@@ -57,4 +60,5 @@ test('homepage interactions include filtering, map selection, image fallback and
   assert.match(css, /\.map-hotspot/);
   assert.match(css, /\.bow-card/);
   assert.match(css, /\.media-card/);
+  assert.match(css, /\.weapon-card/);
 });
