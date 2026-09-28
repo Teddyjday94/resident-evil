@@ -30,3 +30,23 @@ test('game query helpers resolve known ids and reject missing or unknown ids', (
   assert.equal(api.resolveGame(data, null), null);
   assert.equal(api.resolveGame(data, 'missing'), null);
 });
+
+test('relation resolver ignores malformed ids while preserving valid order', () => {
+  const js = read('game.js');
+  const sandbox = { window: {}, URLSearchParams };
+  vm.createContext(sandbox);
+  vm.runInContext(js, sandbox);
+  const { resolveMany } = sandbox.window.RE_GAME_TEST;
+  assert.equal(typeof resolveMany, 'function');
+  assert.deepEqual(JSON.parse(JSON.stringify(resolveMany([{id:'a'},{id:'b'}], ['a','missing','b']))), [{id:'a'},{id:'b'}]);
+});
+
+test('game renderer contains all cross-linked archive sections and fallbacks', () => {
+  const js = read('game.js');
+  for (const id of ['brief','personnel','armory','threats','pathogens','locations','files']) {
+    assert.match(js, new RegExp(`id=["']${id}["']`), `missing #${id}`);
+  }
+  assert.match(js, /dossier\.html\?id=/);
+  assert.match(js, /addEventListener\(['"]error['"]/);
+  assert.match(js, /MEDIA UNAVAILABLE/);
+});
